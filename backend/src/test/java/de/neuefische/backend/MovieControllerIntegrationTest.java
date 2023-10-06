@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class MovieControllerTest {
+class MovieControllerIntegrationTest {
     @Autowired
     MockMvc mockMvc;
 
@@ -32,4 +32,29 @@ class MovieControllerTest {
                 ));
     }
 
+    @Test
+    @DirtiesContext
+    void getAllMovies_expectMovies() throws Exception {
+
+        movieRepo.save(new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson"));
+        movieRepo.save(new Movie("adalij039r", "LOTR - die zwei Türme", "Peter Jackson"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/movies"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("""
+                    [
+                        {
+                            "_id": "adalij039q",
+                            "title": "LOTR - die Gefährten",
+                            "director": "Peter Jackson"
+                        },
+                        {
+                            "_id": "adalij039r",
+                            "title": "LOTR - die zwei Türme",
+                            "director": "Peter Jackson"
+                        }
+                    ]
+                """
+                ));
+    }
 }
