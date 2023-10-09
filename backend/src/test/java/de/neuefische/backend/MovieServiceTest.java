@@ -67,25 +67,26 @@ class MovieServiceTest {
 
     }
 
-    /*TODO: wie schreiben wir einen vernünftigen Unit Test für nicht existente IDs
-            bzw. die Rückgabe eines leeren Optionals?*/
-
-    /*@Test
-    void getMovieById_expectEmptyOptional() {
+    @Test
+    void getMovieById_expectNoSuchElementException() {
         // GIVEN
-        String id = "adalij039q";
+        String id = "currywurst"; // Im Grunde egal was hier steht (brauchen wir nur, um überhaupt einen Übergabewert zu haben)
 
         // WHEN
-        // Stubben Sie die Methode findById für den spezifischen Aufruf
         when(movieRepo.findById(id)).thenReturn(Optional.empty());
-
-        // Rufen Sie Ihre Controller-Funktion auf und erhalten Sie das Ergebnis
-        Optional<Movie> actual = movieRepo.findById(id);
+        /*
+            Um Fehlschlagen des Tests zu provozieren z.B. den thenReturn() befüllen mit:
+            Optional.of( <gültigesMovieObjekt> )
+        */
 
         // THEN
-        // Überprüfen Sie, ob das Ergebnis dem entspricht, was Sie erwarten, wenn kein Eintrag vorhanden ist.
-        assertFalse(actual.isPresent());
-    }*/
+        // Grundsätzlich: Exceptions treten immer an die Stelle des Methoden-returns,
+        // deshalb hier Kernelement unseres Tests: Exception fangen!
+        // Möglichkeiten dafür:
+        // 1. Try Catch (geht immer/überall im Code)
+        // 2. assertThrows
+        assertThrows(NoSuchElementException.class, () -> movieService.getMovieById(id));
+    }
 
 
 
