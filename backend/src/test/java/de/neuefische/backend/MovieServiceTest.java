@@ -2,6 +2,8 @@ package de.neuefische.backend;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -44,6 +46,26 @@ class MovieServiceTest {
         verify(movieRepo).findAll();
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    void getMovieById_expectLOTR() {
+
+        //GIVEN
+        Movie m1 = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
+        String id = m1._id();
+
+        //WHEN
+        when(movieRepo.findById(id)).thenReturn(Optional.of(m1));
+        Movie actual = movieService.getMovieById(id);
+
+        //THEN
+        Movie expected = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
+        verify(movieRepo).findById(id);
+        assertEquals(expected, actual);
+
+    }
+
 
 }
 
