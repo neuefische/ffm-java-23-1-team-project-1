@@ -57,4 +57,35 @@ class MovieControllerIntegrationTest {
                 """
                 ));
     }
+
+    @Test
+    @DirtiesContext
+    void getMovieById_expectMovie() throws Exception {
+        Movie m1 = movieRepo.save(new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/movies/" + m1._id()))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("""
+                        {
+                            "_id": "adalij039q",
+                            "title": "LOTR - die Gefährten",
+                            "director": "Peter Jackson"
+                        }
+                """
+                ));
+    }
+
+    @Test
+    @DirtiesContext
+    void getMovieById_expectNoSuchElementException() throws Exception {
+        //Movie m1 = movieRepo.save(new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/movies/" + "quatschId"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(
+                        "Ups, hier ist etwas schief gelaufen..."
+                ));
+    }
+
+
 }
