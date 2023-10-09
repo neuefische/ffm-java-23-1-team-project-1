@@ -2,6 +2,7 @@ package de.neuefische.backend;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,6 +66,28 @@ class MovieServiceTest {
         assertEquals(expected, actual);
 
     }
+
+    /*TODO: wie schreiben wir einen vernünftigen Unit Test für nicht existente IDs
+            bzw. die Rückgabe eines leeren Optionals?*/
+
+    /*@Test
+    void getMovieById_expectEmptyOptional() {
+        // GIVEN
+        String id = "adalij039q";
+
+        // WHEN
+        // Stubben Sie die Methode findById für den spezifischen Aufruf
+        when(movieRepo.findById(id)).thenReturn(Optional.empty());
+
+        // Rufen Sie Ihre Controller-Funktion auf und erhalten Sie das Ergebnis
+        Optional<Movie> actual = movieRepo.findById(id);
+
+        // THEN
+        // Überprüfen Sie, ob das Ergebnis dem entspricht, was Sie erwarten, wenn kein Eintrag vorhanden ist.
+        assertFalse(actual.isPresent());
+    }*/
+
+
 
 
 }
