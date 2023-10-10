@@ -33,7 +33,7 @@
 
       img {
         width: 100%;
-     height: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -54,10 +54,25 @@
       }
     }
 
+    /*Styling vom Herzen*/
     svg {
       position: absolute;
       bottom: .5rem;
       right: .5rem;
+      /*Strichfarbe und -stärke*/
+      stroke: black;
+      stroke-width: 1.4px;
+      /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
+      path {
+        fill: none;
+      }
+
+      &:hover, &:focus-visible {
+
+        path {
+          fill: purple;
+        }
+      }
     }
   }
 }

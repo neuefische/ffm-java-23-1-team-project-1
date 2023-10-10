@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .movieCard {
   width: 300px;
   height: 300px;
@@ -19,6 +20,7 @@
   gap: 1rem;
   height: 100%;
   position: relative;
+  /*Styling vom Herzen*/
 }
 .movieCard .movieCard-container div:first-of-type {
   height: 100%;
@@ -49,6 +51,16 @@
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
+  /*Strichfarbe und -stärke*/
+  stroke: black;
+  stroke-width: 1.4px;
+  /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
+}
+.movieCard .movieCard-container svg path {
+  fill: none;
+}
+.movieCard .movieCard-container svg:hover path, .movieCard .movieCard-container svg:focus-visible path {
+  fill: purple;
 }
 
 .movieGallery {
