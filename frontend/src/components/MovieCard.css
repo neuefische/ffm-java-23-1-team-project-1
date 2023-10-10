@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .movieCard {
   width: 300px;
   height: 300px;
@@ -14,18 +15,18 @@
   text-decoration: underline;
 }
 .movieCard .movieCard-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-rows: 2.5fr 1fr;
   height: 100%;
   position: relative;
+  /*Styling vom Herzen*/
 }
 .movieCard .movieCard-container div:first-of-type {
-  height: 100%;
   overflow: hidden;
   display: grid;
   place-items: center;
   border-radius: 1rem 1rem 0 0;
+  height: 100%;
 }
 .movieCard .movieCard-container div:first-of-type img {
   width: 100%;
@@ -37,6 +38,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0.75rem 0.75rem;
+  height: 100%;
 }
 .movieCard .movieCard-container div:last-of-type p:first-of-type {
   font-weight: bold;
@@ -49,6 +51,16 @@
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
+  /*Strichfarbe und -stärke*/
+  stroke: black;
+  stroke-width: 1.4px;
+  /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
+}
+.movieCard .movieCard-container svg path {
+  fill: none;
+}
+.movieCard .movieCard-container svg:hover path, .movieCard .movieCard-container svg:focus-visible path {
+  fill: purple;
 }
 
 .movieGallery {
