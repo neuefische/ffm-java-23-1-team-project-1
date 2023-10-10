@@ -1,3 +1,7 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
 header {
   height: 15vh;
   display: grid;
@@ -5,7 +9,7 @@ header {
 }
 header a {
   text-decoration: none;
-  color: inherit;
+  color: black;
 }
 header h1 {
   font-size: 3rem;

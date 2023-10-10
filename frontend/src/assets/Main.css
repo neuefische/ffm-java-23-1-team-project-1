@@ -1,0 +1,20 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #bebebe;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*# sourceMappingURL=Main.css.map */

@@ -1,4 +1,5 @@
 import './App.css'
+import "./assets/Main.css"
 import {useEffect, useState} from "react";
 import {Movie} from "./MovieEntities.ts";
 import axios from 'axios';

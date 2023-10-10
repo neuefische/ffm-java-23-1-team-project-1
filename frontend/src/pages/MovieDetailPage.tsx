@@ -23,6 +23,10 @@ export default function MovieDetailPage() {
             // movie &&
             <div>
                 <h2>{movie?.title}</h2>
+                <p>{movie?.year}</p>
+                <img src={movie?.thumbnail} alt={movie?.title}/>
+                <p>{movie?.extract}</p>
+                <a target={"_blank"} href={`https://www.youtube.com/results?search_query=${movie?.title}+trailer+${movie?.year}`}>YoutubeSuche</a>
             </div>
         }
     </>)
