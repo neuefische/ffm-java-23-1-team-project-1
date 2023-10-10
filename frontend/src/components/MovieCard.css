@@ -59,11 +59,8 @@
 .movieCard .movieCard-container svg path {
   fill: none;
 }
-.movieCard .movieCard-container svg:hover, .movieCard .movieCard-container svg:focus-visible {
-  stroke: gold;
-}
 .movieCard .movieCard-container svg:hover path, .movieCard .movieCard-container svg:focus-visible path {
-  fill: gold;
+  fill: purple;
 }
 
 .movieGallery {

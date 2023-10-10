@@ -53,7 +53,8 @@
         color: gray;
       }
     }
-/*Styling vom Herzen*/
+
+    /*Styling vom Herzen*/
     svg {
       position: absolute;
       bottom: .5rem;
@@ -61,14 +62,15 @@
       /*Strichfarbe und -stärke*/
       stroke: black;
       stroke-width: 1.4px;
-/*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
+      /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
       path {
         fill: none;
       }
+
       &:hover, &:focus-visible {
-        stroke: gold;
+
         path {
-          fill: gold;
+          fill: purple;
         }
       }
     }
