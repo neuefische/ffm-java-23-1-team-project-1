@@ -13,6 +13,14 @@ class MovieServiceTest {
     MovieRepo movieRepo = mock(MovieRepo.class);
     MovieService movieService = new MovieService(movieRepo);
 
+    Movie m1 = new Movie(
+            "65250133a87cf67dc7b57cdd",
+            "The Grudge",
+            2020,
+            "The Grudge is a 2020 American psychological supernatural horror film...",
+            "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+    );
+
     @Test
     void getAllMovies_expectEmptyList() {
 
@@ -33,8 +41,17 @@ class MovieServiceTest {
     @Test
     void getAllMovies_expectOneMovie() {
 
+        /*
+            String _id,
+            String title,
+            int year,
+            String extract,
+            String thumbnail
+         */
+
+
         //GIVEN
-        Movie m1 = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
+
         List<Movie> movieList = List.of(m1);
 
         //WHEN
@@ -42,7 +59,15 @@ class MovieServiceTest {
         List<Movie> actual = movieService.getAllMovies();
 
         //THEN
-        List<Movie> expected = List.of(new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson"));
+        List<Movie> expected = List.of(new Movie(
+
+          "65250133a87cf67dc7b57cdd",
+          "The Grudge",
+          2020,
+          "The Grudge is a 2020 American psychological supernatural horror film written and directed by Nicolas Pesce. Originally announced as a reboot of the 2004 American remake and the original 2002 Japanese horror film Ju-On: The Grudge, the film ended up taking place before and during the events of the 2004 film and its two direct sequels, and is the fourth installment in the American The Grudge film series. The film stars Andrea Riseborough, Demián Bichir, John Cho, Betty Gilpin, Lin Shaye, and Jacki Weaver, and follows a police officer who investigates several murders that are seemingly connected to a single house.",
+          "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+           )
+        );
 
         verify(movieRepo).findAll();
         assertEquals(expected, actual);
@@ -53,7 +78,6 @@ class MovieServiceTest {
     void getMovieById_expectLOTR() {
 
         //GIVEN
-        Movie m1 = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
         String id = m1._id();
 
         //WHEN
@@ -61,7 +85,15 @@ class MovieServiceTest {
         Movie actual = movieService.getMovieById(id);
 
         //THEN
-        Movie expected = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
+        Movie expected = new Movie(
+
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film written and directed by Nicolas Pesce. Originally announced as a reboot of the 2004 American remake and the original 2002 Japanese horror film Ju-On: The Grudge, the film ended up taking place before and during the events of the 2004 film and its two direct sequels, and is the fourth installment in the American The Grudge film series. The film stars Andrea Riseborough, Demián Bichir, John Cho, Betty Gilpin, Lin Shaye, and Jacki Weaver, and follows a police officer who investigates several murders that are seemingly connected to a single house.",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+        );
+
         verify(movieRepo).findById(id);
         assertEquals(expected, actual);
 
@@ -87,10 +119,6 @@ class MovieServiceTest {
         // 2. assertThrows
         assertThrows(NoSuchElementException.class, () -> movieService.getMovieById(id));
     }
-
-
-
-
 
 }
 
