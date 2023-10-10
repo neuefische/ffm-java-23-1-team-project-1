@@ -11,7 +11,14 @@ export default function MovieCard(props: MovieProps) {
             <Link to={`/movies/${props.movie._id}`}>
                 <div className="movieCard-container">
                     <div>
-                        <img src={props.movie.thumbnail} alt="N/A"/>
+                        {
+                            props.movie.thumbnail
+                                ? <img src={props.movie.thumbnail} alt="N/A"/>
+                                : <img
+                                    src="https://images.unsplash.com/photo-1523207911345-32501502db22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZHVtbXklMjBtb3ZpZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                                    alt="N/A"/>
+                        }
+
                     </div>
                     <div>
                         <p>{props.movie.title}</p>
