@@ -5,6 +5,7 @@ import axios from 'axios';
 import MovieGallery from "./components/MovieGallery.tsx";
 import {Route, Routes} from "react-router-dom";
 import MovieDetailPage from "./pages/MovieDetailPage.tsx";
+import Header from "./components/Header.tsx";
 
 export default function App() {
 
@@ -27,7 +28,7 @@ export default function App() {
 
     return (
         <>
-            <h1>FrameFiesta</h1>
+            <Header/>
             <Routes>
                 <Route path={"/movies/:id"} element={<MovieDetailPage/>}/>
                 <Route path={"/movies"} element={<MovieGallery movies={movies}/>}/>
