@@ -1,6 +1,7 @@
 package de.neuefische.backend;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -61,12 +62,12 @@ class MovieServiceTest {
         //THEN
         List<Movie> expected = List.of(new Movie(
 
-          "65250133a87cf67dc7b57cdd",
-          "The Grudge",
-          2020,
-          "The Grudge is a 2020 American psychological supernatural horror film written and directed by Nicolas Pesce. Originally announced as a reboot of the 2004 American remake and the original 2002 Japanese horror film Ju-On: The Grudge, the film ended up taking place before and during the events of the 2004 film and its two direct sequels, and is the fourth installment in the American The Grudge film series. The film stars Andrea Riseborough, Demián Bichir, John Cho, Betty Gilpin, Lin Shaye, and Jacki Weaver, and follows a police officer who investigates several murders that are seemingly connected to a single house.",
-          "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
-           )
+                        "65250133a87cf67dc7b57cdd",
+                        "The Grudge",
+                        2020,
+                        "The Grudge is a 2020 American psychological supernatural horror film...",
+                        "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+                )
         );
 
         verify(movieRepo).findAll();
@@ -90,7 +91,7 @@ class MovieServiceTest {
                 "65250133a87cf67dc7b57cdd",
                 "The Grudge",
                 2020,
-                "The Grudge is a 2020 American psychological supernatural horror film written and directed by Nicolas Pesce. Originally announced as a reboot of the 2004 American remake and the original 2002 Japanese horror film Ju-On: The Grudge, the film ended up taking place before and during the events of the 2004 film and its two direct sequels, and is the fourth installment in the American The Grudge film series. The film stars Andrea Riseborough, Demián Bichir, John Cho, Betty Gilpin, Lin Shaye, and Jacki Weaver, and follows a police officer who investigates several murders that are seemingly connected to a single house.",
+                "The Grudge is a 2020 American psychological supernatural horror film...",
                 "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
         );
 
