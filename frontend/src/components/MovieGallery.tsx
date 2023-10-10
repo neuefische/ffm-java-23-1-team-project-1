@@ -6,10 +6,12 @@ type MovieGalleryProps = {
 }
 
 export default function MovieGallery(props: MovieGalleryProps) {
+
+
     return (
-        <div>
+        <div className="movieGallery">
             {
-                props.movies.map(
+                props.movies.slice(0, 20).map(
                     (movie) => <MovieCard key={movie._id} movie={movie}/>
                 )
             }
