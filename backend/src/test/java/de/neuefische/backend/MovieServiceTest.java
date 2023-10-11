@@ -79,7 +79,7 @@ class MovieServiceTest {
     void getMovieById_expectLOTR() {
 
         //GIVEN
-        String id = m1._id();
+        String id = m1.get_id();
 
         //WHEN
         when(movieRepo.findById(id)).thenReturn(Optional.of(m1));

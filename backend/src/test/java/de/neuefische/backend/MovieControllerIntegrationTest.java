@@ -86,7 +86,7 @@ class MovieControllerIntegrationTest {
                 "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
         ));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/movies/" + m1._id()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/movies/" + m1.get_id()))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json("""
                         {
