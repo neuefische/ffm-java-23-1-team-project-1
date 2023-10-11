@@ -4,33 +4,39 @@
 /* === Colours ===*/
 .movieDetailContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   background-color: #fff;
   margin: 0 5rem;
   padding: 1rem;
-  text-align: center;
   border-radius: 2rem;
   position: relative;
 }
-.movieDetailContainer h2 {
+.movieDetailContainer div {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.movieDetailContainer div h2 {
   font-size: 2rem;
+}
+.movieDetailContainer div p:last-of-type {
+  width: 75%;
+}
+.movieDetailContainer div a img {
+  width: 50px;
+  transition: all 250ms ease-in;
+  margin: 0.5rem 0;
+}
+.movieDetailContainer div a:hover img {
+  scale: 1.2;
 }
 .movieDetailContainer .poster {
   border: 5px solid #fff;
   outline: 5px solid purple;
   margin: 1rem 0;
-}
-.movieDetailContainer p:last-of-type {
-  width: 75%;
-}
-.movieDetailContainer a img {
-  width: 50px;
-  transition: all 250ms ease-in;
-  margin: 0.5rem 0;
-}
-.movieDetailContainer a:hover img {
-  scale: 1.2;
 }
 .movieDetailContainer svg {
   position: absolute;
@@ -48,6 +54,12 @@
 }
 .movieDetailContainer svg:hover path, .movieDetailContainer svg:focus-visible path {
   fill: purple;
+}
+
+@media (max-width: 650px) {
+  .movieDetailContainer {
+    flex-direction: column;
+  }
 }
 
 /*# sourceMappingURL=MovieDetailPage.css.map */
