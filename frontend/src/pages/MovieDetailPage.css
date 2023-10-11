@@ -8,51 +8,97 @@
   align-items: center;
   background-color: #fff;
   margin: 0 5rem;
-  padding: 1rem;
-  border-radius: 2rem;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
   position: relative;
 }
-.movieDetailContainer div {
-  height: 400px;
+.movieDetailContainer div.text-container {
+  /*height: 400px;*/
+  gap: 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
 }
-.movieDetailContainer div h2 {
-  font-size: 2rem;
+.movieDetailContainer div.text-container h2 {
+  font-size: 3rem;
+  max-width: 90%;
+  margin-top: 2rem;
 }
-.movieDetailContainer div p:last-of-type {
-  width: 75%;
+.movieDetailContainer div.text-container > p:first-of-type {
+  font-weight: bold;
+  font-size: 1.5rem;
 }
-.movieDetailContainer div a img {
+.movieDetailContainer div.text-container > p:last-of-type {
+  width: 100%;
+  padding-right: 2rem;
+  line-height: 1.25rem;
+  text-align: justify;
+}
+.movieDetailContainer div.text-container div.logo-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.movieDetailContainer div.text-container div.logo-container a img {
   width: 50px;
-  transition: all 250ms ease-in;
   margin: 0.5rem 0;
 }
-.movieDetailContainer div a:hover img {
-  scale: 1.2;
+.movieDetailContainer div.text-container div.logo-container a:hover img {
+  transition: all 250ms ease-in;
+  scale: 1.1;
 }
-.movieDetailContainer .poster {
-  border: 5px solid #fff;
-  outline: 5px solid purple;
-  margin: 1rem 0;
+.movieDetailContainer div.text-container div.logo-container a:active img {
+  transition: all 50ms ease-in;
+  scale: 0.75;
 }
-.movieDetailContainer svg {
+.movieDetailContainer div.text-container div.logo-container div {
+  display: flex;
+  gap: 1rem;
+}
+.movieDetailContainer div.text-container div.logo-container div p {
+  font-size: 2rem;
+  cursor: pointer;
+}
+.movieDetailContainer div.text-container div.logo-container div p::selection {
+  background-color: inherit;
+  color: inherit;
+}
+.movieDetailContainer div.text-container div.logo-container div p:active {
+  scale: 0.9;
+}
+.movieDetailContainer div.poster-container {
+  position: relative;
+}
+.movieDetailContainer div.poster-container img.poster {
+  outline: 10px solid #fff;
+  /*outline: 5px solid $accentColor;*/
+  height: 100%;
+  transition: all 500ms ease;
+}
+.movieDetailContainer div.poster-container img.poster:hover {
+  scale: 1.15;
+  rotate: 2deg;
+  transform: translateX(10%);
+}
+.movieDetailContainer div.poster-container svg {
   position: absolute;
-  top: 3rem;
-  right: 3rem;
+  top: 1.5rem;
+  left: -3rem;
   stroke: purple;
   stroke-width: 1px;
-  scale: 3;
+  scale: 1.5;
+  cursor: pointer;
 }
-.movieDetailContainer svg path {
+.movieDetailContainer div.poster-container svg path {
   fill: none;
 }
-.movieDetailContainer svg:hover, .movieDetailContainer svg:focus-visible {
+.movieDetailContainer div.poster-container svg:hover, .movieDetailContainer div.poster-container svg:focus-visible {
   stroke: black;
 }
-.movieDetailContainer svg:hover path, .movieDetailContainer svg:focus-visible path {
+.movieDetailContainer div.poster-container svg:hover path, .movieDetailContainer div.poster-container svg:focus-visible path {
   fill: purple;
 }
 
