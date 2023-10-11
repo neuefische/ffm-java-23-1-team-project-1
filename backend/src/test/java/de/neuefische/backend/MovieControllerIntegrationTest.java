@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -111,5 +112,47 @@ class MovieControllerIntegrationTest {
                         "Ups, hier ist etwas schief gelaufen..."
                 ));
     }
+
+
+    @Test
+    @DirtiesContext
+    void updateMovieById_expectUpdatedMovieObject() throws Exception {
+        Movie m1 = movieRepo.save(new Movie(
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+        ));
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/movies/" + m1.get_id())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                            {
+                            "_id": "65250133a87cf67dc7b57cdd",
+                            "title": "The Grudge",
+                            "year": 2020,
+                            "extract": "The Grudge is a 2020 American psychological supernatural horror film...",
+                            "thumbnail": "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                            "isFavorite": true
+                            }
+                    """)
+                )
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("""
+                        {
+                        "_id": "65250133a87cf67dc7b57cdd",
+                        "title": "The Grudge",
+                        "year": 2020,
+                        "extract": "The Grudge is a 2020 American psychological supernatural horror film...",
+                        "thumbnail": "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                        "isFavorite": true
+                        }
+                        """
+                ));
+    }
+
+
+
 
 }

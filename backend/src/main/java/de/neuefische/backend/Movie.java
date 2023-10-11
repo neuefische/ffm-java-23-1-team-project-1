@@ -13,6 +13,10 @@ public class Movie {
     private boolean isFavorite;
 
     // CONSTRUCTORS:
+    public Movie () {
+        // Default Constructor
+    }
+
     public Movie(String _id, String title, int year, String extract, String thumbnail) {
         // Custom Constructor
         this._id = _id;
