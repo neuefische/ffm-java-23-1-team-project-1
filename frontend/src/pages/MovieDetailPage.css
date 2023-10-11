@@ -1,0 +1,53 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
+.movieDetailContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 0 5rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 2rem;
+  position: relative;
+}
+.movieDetailContainer h2 {
+  font-size: 2rem;
+}
+.movieDetailContainer .poster {
+  border: 5px solid #fff;
+  outline: 5px solid purple;
+  margin: 1rem 0;
+}
+.movieDetailContainer p:last-of-type {
+  width: 75%;
+}
+.movieDetailContainer a img {
+  width: 50px;
+  transition: all 250ms ease-in;
+  margin: 0.5rem 0;
+}
+.movieDetailContainer a:hover img {
+  scale: 1.2;
+}
+.movieDetailContainer svg {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  stroke: purple;
+  stroke-width: 1px;
+  scale: 3;
+}
+.movieDetailContainer svg path {
+  fill: none;
+}
+.movieDetailContainer svg:hover, .movieDetailContainer svg:focus-visible {
+  stroke: black;
+}
+.movieDetailContainer svg:hover path, .movieDetailContainer svg:focus-visible path {
+  fill: purple;
+}
+
+/*# sourceMappingURL=MovieDetailPage.css.map */
