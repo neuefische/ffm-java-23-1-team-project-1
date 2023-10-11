@@ -115,7 +115,6 @@ class MovieServiceTest {
     void updateMovieById_expectUpdatedMovieObject(){
 
         //GIVEN
-        String id = m1.get_id();
         Movie m1Update = new Movie(m1.get_id(), m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
 
         //WHEN
