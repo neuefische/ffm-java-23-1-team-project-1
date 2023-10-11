@@ -2,6 +2,7 @@ package de.neuefische.backend;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class MovieController {
 
     // TODO:
     @PutMapping("/movies/{id}")
-    public Movie updateMovieById(@PathVariable String id, @RequestBody Movie movie) {
+    public Movie updateMovieById(@PathVariable String id, @RequestBody Movie movie) throws DataAccessException {
         return movieService.putMovieById(id, movie);
     }
 
@@ -35,6 +36,11 @@ public class MovieController {
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException() {
         return "Ups, hier ist etwas schief gelaufen...";
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public String handleDataAccessException() {
+        return "Invalider Request Body. Objekt konnte nicht aktualisiert werden...";
     }
 
 }
