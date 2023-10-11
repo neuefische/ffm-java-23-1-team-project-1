@@ -24,6 +24,13 @@ public class MovieController {
         return movieService.getMovieById(id);
     }
 
+    // TODO:
+    @PutMapping("/movies/{id}")
+    public Movie updateMovieById(@PathVariable String id, @RequestBody Movie movie) {
+        return movieService.putMovieById(id, movie);
+    }
+
+
 
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException() {
