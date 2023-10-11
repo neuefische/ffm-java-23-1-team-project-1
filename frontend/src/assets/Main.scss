@@ -11,3 +11,7 @@ body {
 h1 {
   text-align: center;
 }
+*:not(:empty)::selection {
+  color: $textColorLight;
+  background-color: $accentColor;
+}
