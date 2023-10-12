@@ -136,5 +136,31 @@ class MovieServiceTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void toggleIsFavorite_expectIsFavoriteHasChangeValue(){
+
+        //GIVEN
+        Movie m1Update = new Movie(m1.get_id(), m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
+
+        //WHEN
+        when(movieRepo.findById(m1.get_id())).thenReturn(Optional.of(m1));
+        when(movieRepo.save(m1Update)).thenReturn(m1Update);
+        Movie actual = movieService.toggleIsFavorite(m1.get_id(), m1Update.getIsFavorite());
+
+        //THEN
+        Movie expected = new Movie(
+
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                true
+        );
+
+        verify(movieRepo).save(m1Update);
+        assertEquals(expected, actual);
+    }
+
 }
 
