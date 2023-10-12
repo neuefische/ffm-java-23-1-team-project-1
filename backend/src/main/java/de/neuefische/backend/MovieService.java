@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,4 +37,19 @@ public class MovieService {
         return movieRepo.save(updatedMovie);
     }
 
+    public Movie toggleIsFavorite(String id) throws IllegalArgumentException{
+        Optional<Movie> updatedMovie = movieRepo.findById(id);
+
+        if (updatedMovie.isPresent()) {
+            return movieRepo.save(
+                    updatedMovie.get().withFavorite(
+                                    !updatedMovie
+                                            .get()
+                                            .getIsFavorite()
+                    )
+            );
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }

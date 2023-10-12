@@ -31,6 +31,11 @@ public class MovieController {
         return movieService.putMovieById(id, movie);
     }
 
+    @PatchMapping("/movies/{id}/favorite")
+    public Movie toggleIsFavorite(@PathVariable String id) {
+        return movieService.toggleIsFavorite(id);
+    }
+
 
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException() {
@@ -41,6 +46,11 @@ public class MovieController {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public String handleHttpMessageNotReadableException(Exception e) {
         return e.toString();
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String handleIllegalArgumentException() {
+        return "fck off";
     }
 
    /* @ExceptionHandler(Exception.class)
