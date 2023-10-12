@@ -31,9 +31,9 @@ public class MovieController {
         return movieService.putMovieById(id, movie);
     }
 
-    @PatchMapping("/movies/{id}/favorite")
-    public Movie toggleIsFavorite(@PathVariable String id) {
-        return movieService.toggleIsFavorite(id);
+    @PatchMapping("/movies/{id}")
+    public Movie toggleIsFavorite(@PathVariable String id, @RequestParam boolean favoriteStatement) {
+        return movieService.toggleIsFavorite(id, favoriteStatement);
     }
 
 

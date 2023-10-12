@@ -37,17 +37,11 @@ public class MovieService {
         return movieRepo.save(updatedMovie);
     }
 
-    public Movie toggleIsFavorite(String id) throws IllegalArgumentException{
+    public Movie toggleIsFavorite(String id, boolean favoriteStatement) throws IllegalArgumentException{
         Optional<Movie> updatedMovie = movieRepo.findById(id);
 
         if (updatedMovie.isPresent()) {
-            return movieRepo.save(
-                    updatedMovie.get().withFavorite(
-                                    !updatedMovie
-                                            .get()
-                                            .getIsFavorite()
-                    )
-            );
+            return movieRepo.save(updatedMovie.get().withFavorite(favoriteStatement));
         } else {
             throw new IllegalArgumentException();
         }
