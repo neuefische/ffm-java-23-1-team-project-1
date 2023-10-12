@@ -13,7 +13,7 @@ export default function Header() {
             <nav>
                 <ul>
                     <li><Link to={"/movies"}>Alle Filme</Link></li>
-                    <li><Link to={"/movies"}>Favoriten</Link></li>
+                    <li><Link to={"/favorites"}>Favoriten</Link></li>
                 </ul>
             </nav>
         </header>
