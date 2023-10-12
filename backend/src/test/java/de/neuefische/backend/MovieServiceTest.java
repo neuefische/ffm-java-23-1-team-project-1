@@ -42,17 +42,7 @@ class MovieServiceTest {
     @Test
     void getAllMovies_expectOneMovie() {
 
-        /*
-            String _id,
-            String title,
-            int year,
-            String extract,
-            String thumbnail
-         */
-
-
         //GIVEN
-
         List<Movie> movieList = List.of(m1);
 
         //WHEN
@@ -79,7 +69,7 @@ class MovieServiceTest {
     void getMovieById_expectLOTR() {
 
         //GIVEN
-        String id = m1._id();
+        String id = m1.get_id();
 
         //WHEN
         when(movieRepo.findById(id)).thenReturn(Optional.of(m1));
@@ -119,6 +109,31 @@ class MovieServiceTest {
         // 1. Try Catch (geht immer/überall im Code)
         // 2. assertThrows
         assertThrows(NoSuchElementException.class, () -> movieService.getMovieById(id));
+    }
+
+    @Test
+    void updateMovieById_expectUpdatedMovieObject(){
+
+        //GIVEN
+        Movie m1Update = new Movie(m1.get_id(), m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
+
+        //WHEN
+        when(movieRepo.save(m1Update)).thenReturn(m1Update);
+        Movie actual = movieService.putMovieById(m1.get_id(), m1Update);
+
+        //THEN
+        Movie expected = new Movie(
+
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                true
+        );
+
+        verify(movieRepo).save(m1Update);
+        assertEquals(expected, actual);
     }
 
 }
