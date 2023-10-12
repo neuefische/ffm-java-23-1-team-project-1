@@ -11,9 +11,10 @@ import Header from "./components/Header.tsx";
 export default function App() {
 
     const [movies, setMovies] = useState<Movie[]>([])
+    const [favoriteState , setFavoriteState] = useState<Movie>()
 
     useEffect(
-        fetchMovieData, []
+        fetchMovieData, [favoriteState]
     )
 
     function fetchMovieData() {
@@ -26,13 +27,23 @@ export default function App() {
             })
     }
 
+    function toggleFavorite(id: string, favoriteStatement: boolean) {
+        axios.patch("/api/movies/"+id+"?favoriteStatement="+favoriteStatement)
+            .then(response => {
+                setFavoriteState(response.data)
+            })
+            .catch(reason => {
+                console.log(reason)
+            })
+    }
+
 
     return (
         <>
             <Header/>
             <Routes>
                 <Route path={"/movies/:id"} element={<MovieDetailPage/>}/>
-                <Route path={"/movies"} element={<MovieGallery movies={movies}/>}/>
+                <Route path={"/movies"} element={<MovieGallery movies={movies}  toggleFavorite={toggleFavorite}/>}/>
             </Routes>
         </>
     )

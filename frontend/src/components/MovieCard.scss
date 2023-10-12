@@ -65,6 +65,7 @@
 
     /*Styling vom Herzen*/
     svg {
+      z-index: 999;
       position: absolute;
       bottom: .5rem;
       right: .5rem;
@@ -72,19 +73,19 @@
       stroke: $textColorDark;
       stroke-width: 1.4px;
       /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
-      path {
+
+
+      .isFavoriteIsFalse {
         fill: none;
       }
 
-      &:hover, &:focus-visible {
-
-        path {
-          fill: $accentColor;
-        }
+      .isFavoriteIsTrue {
+        fill: $accentColor;
       }
     }
   }
 }
+
 
 .movieGallery {
   display: flex;

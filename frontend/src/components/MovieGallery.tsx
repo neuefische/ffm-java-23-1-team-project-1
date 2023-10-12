@@ -2,7 +2,9 @@ import {Movie} from "../MovieEntities.ts";
 import MovieCard from "./MovieCard.tsx";
 
 type MovieGalleryProps = {
-    movies : Movie[]
+    movies: Movie[],
+
+    toggleFavorite: (id: string, favoriteStatement: boolean) => void
 }
 
 export default function MovieGallery(props: MovieGalleryProps) {
@@ -12,7 +14,7 @@ export default function MovieGallery(props: MovieGalleryProps) {
         <div className="movieGallery">
             {
                 props.movies.slice(0, 20).map(
-                    (movie) => <MovieCard key={movie._id} movie={movie}/>
+                    (mov) => <MovieCard key={mov._id} movie={mov}  toggleFavorite={props.toggleFavorite}/>
                 )
             }
         </div>

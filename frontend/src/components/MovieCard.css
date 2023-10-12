@@ -54,6 +54,7 @@
   color: gray;
 }
 .movieCard .movieCard-container svg {
+  z-index: 999;
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
@@ -62,10 +63,10 @@
   stroke-width: 1.4px;
   /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
 }
-.movieCard .movieCard-container svg path {
+.movieCard .movieCard-container svg .isFavoriteIsFalse {
   fill: none;
 }
-.movieCard .movieCard-container svg:hover path, .movieCard .movieCard-container svg:focus-visible path {
+.movieCard .movieCard-container svg .isFavoriteIsTrue {
   fill: purple;
 }
 
