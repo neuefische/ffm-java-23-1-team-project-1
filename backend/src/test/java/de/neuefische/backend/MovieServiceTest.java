@@ -162,5 +162,20 @@ class MovieServiceTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void toggleIsFavorite_expectIllegalArgumentException(){
+
+        //GIVEN
+        String id = m1.get_id();
+        Movie m1Update = new Movie(id, m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
+        boolean updateFavorite = m1Update.getIsFavorite();
+
+        //WHEN
+        when(movieRepo.findById(id)).thenReturn(Optional.empty());
+        when(movieRepo.save(m1Update)).thenReturn(m1Update);
+
+        //THEN
+        assertThrows(IllegalArgumentException.class, () -> movieService.toggleIsFavorite(id, updateFavorite));
+    }
 }
 
