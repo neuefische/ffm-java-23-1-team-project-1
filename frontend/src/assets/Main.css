@@ -23,6 +23,16 @@ h1 {
 }
 
 /*Herz - svg*/
+.herzSvg {
+  transition: filter 250ms ease;
+}
+.herzSvg:hover {
+  filter: drop-shadow(2px 2px 4px gray);
+}
+.herzSvg:active {
+  filter: drop-shadow(1px 1px 1px gray);
+}
+
 .isFavoriteIsFalse {
   fill: none;
 }
