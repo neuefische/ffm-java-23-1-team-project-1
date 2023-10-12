@@ -7,6 +7,7 @@ import MovieGallery from "./components/MovieGallery.tsx";
 import {Route, Routes} from "react-router-dom";
 import MovieDetailPage from "./pages/MovieDetailPage.tsx";
 import Header from "./components/Header.tsx";
+import StartPage from "./pages/StartPage/StartPage.tsx";
 
 export default function App() {
 
@@ -42,6 +43,7 @@ export default function App() {
         <>
             <Header/>
             <Routes>
+                <Route path={"/"} element={<StartPage movies={movies}/>}/>
                 <Route path={"/movies/:id"} element={<MovieDetailPage favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
                 <Route path={"/movies"} element={<MovieGallery movies={movies}  toggleFavorite={toggleFavorite}/>}/>
             </Routes>

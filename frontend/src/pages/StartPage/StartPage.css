@@ -1,0 +1,10 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
+.startPage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/*# sourceMappingURL=StartPage.css.map */
