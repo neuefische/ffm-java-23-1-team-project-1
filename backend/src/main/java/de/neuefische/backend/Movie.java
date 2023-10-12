@@ -15,7 +15,9 @@ public class Movie {
 
     // CONSTRUCTORS:
     public Movie () {
-        // Default Constructor
+        this._id = "test id";
+        this.title = "test title";
+        this.year = 0;
     }
 
     public Movie(String _id, String title, int year, String extract, String thumbnail) {
