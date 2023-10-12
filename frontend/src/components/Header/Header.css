@@ -7,10 +7,6 @@ header {
   display: grid;
   place-items: center;
 }
-header a {
-  text-decoration: none;
-  color: black;
-}
 header h1 {
   font-size: 3rem;
 }

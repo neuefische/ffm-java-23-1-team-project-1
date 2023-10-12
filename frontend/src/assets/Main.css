@@ -22,6 +22,11 @@ h1 {
   background-color: purple;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*Herz - svg*/
 .herzSvg {
   transition: filter 250ms ease;

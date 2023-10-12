@@ -14,17 +14,15 @@ export default function FavoriteMoviesComponent(props: FavoriteMoviesProps) {
                     .filter(movie => movie.isFavorite)
                     .slice(0, 10)
                     .map(movie => (
-                        <ul>
-                            <Link to={`/movies/${movie._id}`}>
-                                <li key={movie._id}>
+                        <Link to={`/movies/${movie._id}`} key={movie._id}>
+                            <li>
 
-                                    <img src={movie.thumbnail} alt={movie.title}/>
-                                    <p>{movie.title}, <span>{movie.year}</span></p>
+                                <img src={movie.thumbnail} alt={movie.title}/>
+                                <p>{movie.title}, <span>{movie.year}</span></p>
 
 
-                                </li>
-                            </Link>
-                        </ul>
+                            </li>
+                        </Link>
                     ))}
             </ul>
 
