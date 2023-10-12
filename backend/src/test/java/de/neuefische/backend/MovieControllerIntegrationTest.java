@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.web.servlet.function.RequestPredicates.contentType;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -153,8 +152,6 @@ class MovieControllerIntegrationTest {
                 ));
     }
 
-    //TODO: Testfall für PUT-Exception konnte noch nicht provoziert werden.
-
     @Test
     @DirtiesContext
     void putMovieById_expectHttpMessageNotReadableException() throws Exception {
@@ -181,6 +178,34 @@ class MovieControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(
                         "org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: title is marked non-null but is null"
+                ));
+    }
+
+    @Test
+    @DirtiesContext
+    void toggleIsFavorite_expectIsFavoriteHasChangeToTrue() throws Exception {
+        boolean favoriteStatement = true;
+        Movie m1 = movieRepo.save(new Movie(
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                false
+        ));
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/movies/" + m1.get_id() +"?favoriteStatement="+ favoriteStatement))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("""
+                        {
+                        "_id": "65250133a87cf67dc7b57cdd",
+                        "title": "The Grudge",
+                        "year": 2020,
+                        "extract": "The Grudge is a 2020 American psychological supernatural horror film...",
+                        "thumbnail": "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg",
+                        "isFavorite": true
+                        }
+                        """
                 ));
     }
 

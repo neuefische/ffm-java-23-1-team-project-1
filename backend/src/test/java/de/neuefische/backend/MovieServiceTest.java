@@ -137,7 +137,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void toggleIsFavorite_expectIsFavoriteHasChangeValue(){
+    void toggleIsFavorite_expectIsFavoriteHasChangeToTrue(){
 
         //GIVEN
         Movie m1Update = new Movie(m1.get_id(), m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
