@@ -21,7 +21,7 @@ public class MovieService {
         return movieRepo.findById(id).orElseThrow();
     }
 
-    public Movie putMovieById (String id, Movie movie) throws DataAccessException {
+    public Movie putMovieById (String id, Movie movie) {
         /*
             Take in a whole Movie object, already containing all the desired attributes.
             Then use the (already existing) id to exchange its contents in the DB:

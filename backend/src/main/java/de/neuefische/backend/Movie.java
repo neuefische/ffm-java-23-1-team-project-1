@@ -1,13 +1,14 @@
 package de.neuefische.backend;
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 public class Movie {
 
     // ATTRIBUTES
-    private String _id;
-    private String title;
-    private int year;
+    private @NonNull String _id;
+    private @NonNull String title;
+    private @NonNull int year;
     private String extract;
     private String thumbnail;
     private boolean isFavorite;
