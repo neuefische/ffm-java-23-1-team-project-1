@@ -12,6 +12,8 @@
 }
 .randomMovie article img {
   width: 60%;
+  border: 3px solid transparent;
+  outline: 2px solid white;
 }
 .randomMovie article h4 {
   font-size: 1.5rem;

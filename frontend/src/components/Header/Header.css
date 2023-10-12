@@ -3,12 +3,54 @@
 /*font-sizes*/
 /* === Colours ===*/
 header {
-  height: 15vh;
-  display: grid;
-  place-items: center;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
 }
-header h1 {
+header div {
+  height: 100%;
+}
+header div a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+header div a img {
+  height: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+header div h1 {
   font-size: 3rem;
+  cursor: default;
+}
+header nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+header nav ul a {
+  position: relative;
+}
+header nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: purple;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms ease-in;
+}
+header nav ul a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /*# sourceMappingURL=Header.css.map */
