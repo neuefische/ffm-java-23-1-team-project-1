@@ -1,4 +1,4 @@
-import {Movie} from "../../MovieEntities.ts";
+import {Movie} from "../../assets/MovieEntities.ts";
 import FavoriteMoviesComponent from "../../components/FavoriteMovies/FavoriteMoviesComponent.tsx";
 import "./StartPage.css"
 

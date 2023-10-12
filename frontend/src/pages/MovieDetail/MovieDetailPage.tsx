@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Movie} from "../MovieEntities.ts";
+import {Movie} from "../../assets/MovieEntities.ts";
 
 import "./MovieDetailPage.css"
 

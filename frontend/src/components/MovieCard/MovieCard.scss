@@ -1,4 +1,4 @@
-@import "../assets/Variables.scss";
+@import "../../assets/Variables";
 
 .movieCard {
   width: 300px;
@@ -83,12 +83,4 @@
 
 
   }
-}
-
-
-.movieGallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }

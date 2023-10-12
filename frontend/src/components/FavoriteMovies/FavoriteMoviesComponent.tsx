@@ -1,4 +1,4 @@
-import {Movie} from "../../MovieEntities.ts";
+import {Movie} from "../../assets/MovieEntities.ts";
 import "./FavoriteMoviesComponent.css"
 import {Link} from "react-router-dom";
 

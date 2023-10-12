@@ -64,11 +64,4 @@
   /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
 }
 
-.movieGallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 /*# sourceMappingURL=MovieCard.css.map */
