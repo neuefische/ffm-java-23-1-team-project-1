@@ -209,4 +209,22 @@ class MovieControllerIntegrationTest {
                 ));
     }
 
+    @Test
+    @DirtiesContext
+    void toggleIsFavorite_expectIllegalArgumentException() throws Exception {
+        boolean favoriteStatement = true;
+        Movie m1 = movieRepo.save(new Movie(
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+        ));
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/movies/" + "quatschId" +"?favoriteStatement="+ favoriteStatement))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(
+                        "IllegalArgument! Ein oder mehrere Übergabewerte sind falsch."
+                ));
+    }
 }

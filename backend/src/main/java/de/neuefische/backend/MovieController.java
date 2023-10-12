@@ -50,7 +50,7 @@ public class MovieController {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleIllegalArgumentException() {
-        return "fck off";
+        return "IllegalArgument! Ein oder mehrere Übergabewerte sind falsch.";
     }
 
    /* @ExceptionHandler(Exception.class)
