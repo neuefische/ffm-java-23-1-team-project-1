@@ -37,19 +37,15 @@ public class MovieController {
         return "Ups, hier ist etwas schief gelaufen...";
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public String handleIllegalArgumentException() {
-        return "Invalider Request Body. Objekt konnte nicht aktualisiert werden...";
-    }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public String handleHttpMessageNotReadableException(Exception e) {
         return e.toString();
     }
 
-    @ExceptionHandler(Exception.class)
+   /* @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
         return "You suck!" + e.toString();
-    }
+    }*/
 
 }
