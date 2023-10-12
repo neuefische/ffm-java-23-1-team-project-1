@@ -42,7 +42,7 @@ export default function App() {
         <>
             <Header/>
             <Routes>
-                <Route path={"/movies/:id"} element={<MovieDetailPage/>}/>
+                <Route path={"/movies/:id"} element={<MovieDetailPage favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
                 <Route path={"/movies"} element={<MovieGallery movies={movies}  toggleFavorite={toggleFavorite}/>}/>
             </Routes>
         </>

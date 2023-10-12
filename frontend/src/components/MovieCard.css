@@ -11,50 +11,50 @@
   border-radius: 1rem;
   background-color: white;
 }
-.movieCard a {
-  text-decoration: none;
-  color: black;
-}
-.movieCard a:hover p:first-of-type {
-  text-decoration: underline;
-}
 .movieCard .movieCard-container {
-  display: grid;
-  grid-template-rows: 2.5fr 1fr;
   height: 100%;
   position: relative;
   /*Styling vom Herzen*/
 }
-.movieCard .movieCard-container div:first-of-type {
+.movieCard .movieCard-container a {
+  text-decoration: none;
+  color: black;
+  display: grid;
+  grid-template-rows: 2.5fr 1fr;
+  height: 100%;
+}
+.movieCard .movieCard-container a:hover p:first-of-type {
+  text-decoration: underline;
+}
+.movieCard .movieCard-container a div:first-of-type {
   overflow: hidden;
   display: grid;
   place-items: center;
   border-radius: 1rem 1rem 0 0;
   height: 100%;
 }
-.movieCard .movieCard-container div:first-of-type img {
+.movieCard .movieCard-container a div:first-of-type img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 250ms ease-in;
 }
-.movieCard .movieCard-container div:last-of-type {
+.movieCard .movieCard-container a div:last-of-type {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0.75rem 0.75rem;
   height: 100%;
 }
-.movieCard .movieCard-container div:last-of-type p:first-of-type {
+.movieCard .movieCard-container a div:last-of-type p:first-of-type {
   font-weight: bold;
   font-size: 1rem;
 }
-.movieCard .movieCard-container div:last-of-type p:nth-of-type(2) {
+.movieCard .movieCard-container a div:last-of-type p:nth-of-type(2) {
   font-size: 0.75rem;
   color: gray;
 }
-.movieCard .movieCard-container svg {
-  z-index: 999;
+.movieCard svg {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
@@ -62,12 +62,6 @@
   stroke: black;
   stroke-width: 1.4px;
   /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
-}
-.movieCard .movieCard-container svg .isFavoriteIsFalse {
-  fill: none;
-}
-.movieCard .movieCard-container svg .isFavoriteIsTrue {
-  fill: purple;
 }
 
 .movieGallery {

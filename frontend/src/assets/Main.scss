@@ -1,17 +1,31 @@
 @import "./Variables.scss";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: $primaryColor;
   font-family: $fontFamily;
 }
+
 h1 {
   text-align: center;
 }
+
 *:not(:empty)::selection {
   color: $textColorLight;
   background-color: $accentColor;
 }
+
+/*Herz - svg*/
+
+  .isFavoriteIsFalse {
+    fill: none;
+  }
+
+  .isFavoriteIsTrue {
+    fill: $accentColor;
+  }

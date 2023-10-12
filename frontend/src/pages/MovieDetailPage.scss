@@ -117,17 +117,7 @@
       scale: 1.5;
       cursor: pointer;
 
-      path {
-        fill: none;
-      }
 
-      &:hover, &:focus-visible {
-        stroke: $textColorDark;
-
-        path {
-          fill: $accentColor;
-        }
-      }
     }
   }
 

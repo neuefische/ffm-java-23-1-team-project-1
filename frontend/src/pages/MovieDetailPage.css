@@ -98,15 +98,6 @@
   scale: 1.5;
   cursor: pointer;
 }
-.movieDetailContainer div.poster-container svg path {
-  fill: none;
-}
-.movieDetailContainer div.poster-container svg:hover, .movieDetailContainer div.poster-container svg:focus-visible {
-  stroke: black;
-}
-.movieDetailContainer div.poster-container svg:hover path, .movieDetailContainer div.poster-container svg:focus-visible path {
-  fill: purple;
-}
 
 @media (max-width: 650px) {
   .movieDetailContainer {

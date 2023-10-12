@@ -22,4 +22,13 @@ h1 {
   background-color: purple;
 }
 
+/*Herz - svg*/
+.isFavoriteIsFalse {
+  fill: none;
+}
+
+.isFavoriteIsTrue {
+  fill: purple;
+}
+
 /*# sourceMappingURL=Main.css.map */

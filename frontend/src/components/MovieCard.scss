@@ -8,81 +8,80 @@
   border-radius: 1rem;
   background-color: white;
 
-  a {
-    text-decoration: none;
-    color: $textColorDark;
-
-    &:hover {
-      p:first-of-type {
-        text-decoration: underline;
-      }
-    }
-
-  }
 
   .movieCard-container {
-    display: grid;
-    grid-template-rows: 2.5fr 1fr;
-
     height: 100%;
     position: relative;
 
-    div:first-of-type {
-      overflow: hidden;
+    a {
+      text-decoration: none;
+      color: $textColorDark;
+
       display: grid;
-      place-items: center;
-      border-radius: 1rem 1rem 0 0;
+      grid-template-rows: 2.5fr 1fr;
+
       height: 100%;
 
-      img {
-        width: 100%;
+
+      &:hover {
+        p:first-of-type {
+          text-decoration: underline;
+        }
+      }
+
+
+      div:first-of-type {
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        border-radius: 1rem 1rem 0 0;
         height: 100%;
-        object-fit: cover;
-        transition: all 250ms ease-in;
-      }
 
-    }
-
-    div:last-of-type {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: .75rem .75rem;
-      height: 100%;
-
-      p:first-of-type {
-        font-weight: bold;
-        font-size: $fontSizeM;
-
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 250ms ease-in;
+        }
 
       }
 
-      p:nth-of-type(2) {
-        font-size: $fontSizeS;
-        color: $textColorMedium;
+      div:last-of-type {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: .75rem .75rem;
+        height: 100%;
+
+        p:first-of-type {
+          font-weight: bold;
+          font-size: $fontSizeM;
+
+
+        }
+
+        p:nth-of-type(2) {
+          font-size: $fontSizeS;
+          color: $textColorMedium;
+        }
       }
     }
 
     /*Styling vom Herzen*/
-    svg {
-      z-index: 999;
-      position: absolute;
-      bottom: .5rem;
-      right: .5rem;
-      /*Strichfarbe und -stärke*/
-      stroke: $textColorDark;
-      stroke-width: 1.4px;
-      /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
 
 
-      .isFavoriteIsFalse {
-        fill: none;
-      }
+  }
 
-      .isFavoriteIsTrue {
-        fill: $accentColor;
-      }
-    }
+  svg {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    /*Strichfarbe und -stärke*/
+    stroke: $textColorDark;
+    stroke-width: 1.4px;
+    /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
+
+
   }
 }
 
