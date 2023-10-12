@@ -17,4 +17,9 @@ h1 {
   text-align: center;
 }
 
+*:not(:empty)::selection {
+  color: white;
+  background-color: purple;
+}
+
 /*# sourceMappingURL=Main.css.map */

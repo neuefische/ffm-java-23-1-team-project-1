@@ -1,61 +1,163 @@
 @import "../assets/Variables.scss";
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .movieDetailContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   background-color: $secondaryColor;
   margin: 0 5rem;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 2rem;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
   position: relative;
+  max-width: 1000px;
 
-  h2 {
-    font-size: $fontSizeXL;
-  }
+  div.text-container {
+    /*height: 400px;*/
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
 
-  .poster {
-    border: 5px solid $secondaryColor;
-    outline: 5px solid $accentColor;
-    margin: 1rem 0;
-  }
-
-  p:last-of-type {
-    width: 75%;
-  }
-
-  a {
-
-    img {
-      width: 50px;
-      transition: all 250ms ease-in;
-      margin: .5rem 0;
+    h2 {
+      font-size: $fontSizeXXL;
+      max-width: 90%;
+      margin-top: 2rem;
     }
 
-    &:hover img {
-      scale: 1.2;
+    > p:first-of-type {
+      font-weight: bold;
+      font-size: $fontSizeL;
+    }
+
+    > p:last-of-type {
+      width: 100%;
+      padding-right: 2rem;
+      line-height: 1.25rem;
+      text-align: justify;
+    }
+
+    div.logo-container {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      a {
+
+        img {
+          width: 50px;
+
+          margin: .5rem 0;
+        }
+
+        &:hover img {
+          transition: all 250ms ease-in;
+          scale: 1.1;
+        }
+
+        &:active img {
+          transition: all 50ms ease-in;
+          scale: .75;
+        }
+      }
+
+      div {
+        display: flex;
+        gap: 1rem;
+
+        p {
+          font-size: $fontSizeXL;
+          cursor: pointer;
+
+          &::selection {
+            background-color: inherit;
+            color: inherit;
+          }
+
+          &:active {
+            scale: .9;
+          }
+        }
+
+      }
     }
   }
 
-  svg {
-    position: absolute;
-    $distanceOfSvg: 3rem;
-    top: $distanceOfSvg;
-    right: $distanceOfSvg;
-    stroke: $accentColor;
-    stroke-width: 1px;
-    scale: 3;
+  div.poster-container {
+    position: relative;
 
-    path {
-      fill: none;
+
+    img.poster {
+      outline: 10px solid $secondaryColor;
+      /*outline: 5px solid $accentColor;*/
+      height: 100%;
+      transition: all 500ms ease;
+
+
+      &:hover {
+        scale: 1.15;
+        rotate: 2deg;
+        transform: translateX(10%);
+      }
     }
 
-    &:hover, &:focus-visible {
-      stroke: $textColorDark;
+    svg {
+      position: absolute;
+      top: 1.5rem;
+      left: -3rem;
+      stroke: $accentColor;
+      stroke-width: 1px;
+      scale: 1.5;
+      cursor: pointer;
 
       path {
-        fill: $accentColor;
+        fill: none;
+      }
+
+      &:hover, &:focus-visible {
+        stroke: $textColorDark;
+
+        path {
+          fill: $accentColor;
+        }
+      }
+    }
+  }
+
+
+}
+
+@media (max-width: 650px) {
+  .movieDetailContainer {
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: 5rem;
+    align-items: flex-start;
+
+
+    div.text-container {
+      gap: 1rem;
+
+      h2 {
+        font-size: $fontSizeXL;
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+
+      p:first-of-type {
+        color: $textColorMedium;
+        font-size: $fontSizeM;
+      }
+
+      > p:last-of-type {
+        display: none;
       }
     }
   }
