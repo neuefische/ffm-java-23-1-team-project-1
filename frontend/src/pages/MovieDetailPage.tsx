@@ -21,8 +21,7 @@ export default function MovieDetailPage() {
 
 
     return (<>
-        {
-            // movie &&
+        {<div className="container">
             <article className="movieDetailContainer">
                 <div className="text-container">
                     <h2>{movie?.title}</h2>
@@ -51,6 +50,7 @@ export default function MovieDetailPage() {
                 </div>
 
             </article>
+        </div>
         }
     </>)
 

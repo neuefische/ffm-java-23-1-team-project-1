@@ -2,6 +2,11 @@
 /* Font-Family*/
 /*font-sizes*/
 /* === Colours ===*/
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .movieDetailContainer {
   display: flex;
   flex-direction: row;
@@ -11,6 +16,7 @@
   padding: 1rem 3rem;
   border-radius: 1rem;
   position: relative;
+  max-width: 1000px;
 }
 .movieDetailContainer div.text-container {
   /*height: 400px;*/
@@ -104,7 +110,25 @@
 
 @media (max-width: 650px) {
   .movieDetailContainer {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: 5rem;
+    align-items: flex-start;
+  }
+  .movieDetailContainer div.text-container {
+    gap: 1rem;
+  }
+  .movieDetailContainer div.text-container h2 {
+    font-size: 2rem;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+  .movieDetailContainer div.text-container p:first-of-type {
+    color: gray;
+    font-size: 1rem;
+  }
+  .movieDetailContainer div.text-container > p:last-of-type {
+    display: none;
   }
 }
 

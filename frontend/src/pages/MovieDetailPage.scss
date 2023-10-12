@@ -1,5 +1,10 @@
 @import "../assets/Variables.scss";
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .movieDetailContainer {
   display: flex;
   flex-direction: row;
@@ -9,6 +14,7 @@
   padding: 1rem 3rem;
   border-radius: 1rem;
   position: relative;
+  max-width: 1000px;
 
   div.text-container {
     /*height: 400px;*/
@@ -55,6 +61,7 @@
           transition: all 250ms ease-in;
           scale: 1.1;
         }
+
         &:active img {
           transition: all 50ms ease-in;
           scale: .75;
@@ -64,9 +71,11 @@
       div {
         display: flex;
         gap: 1rem;
+
         p {
           font-size: $fontSizeXL;
           cursor: pointer;
+
           &::selection {
             background-color: inherit;
             color: inherit;
@@ -90,7 +99,6 @@
       /*outline: 5px solid $accentColor;*/
       height: 100%;
       transition: all 500ms ease;
-
 
 
       &:hover {
@@ -128,6 +136,29 @@
 
 @media (max-width: 650px) {
   .movieDetailContainer {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: 5rem;
+    align-items: flex-start;
+
+
+    div.text-container {
+      gap: 1rem;
+
+      h2 {
+        font-size: $fontSizeXL;
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+
+      p:first-of-type {
+        color: $textColorMedium;
+        font-size: $fontSizeM;
+      }
+
+      > p:last-of-type {
+        display: none;
+      }
+    }
   }
 }
