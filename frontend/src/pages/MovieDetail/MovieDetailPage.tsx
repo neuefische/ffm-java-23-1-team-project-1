@@ -84,13 +84,13 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                             </>
                             : <form onSubmit={(event) => submitEditedMovie(event, movie?._id)}>
                                 <label>
-                                    <input type="text" value={title ?? movie.title} onChange={changeTitle}/>
+                                    <input type="text" value={title ?? movie.title} onChange={changeTitle} id={"title"}/>
                                 </label>
                                 <label>
-                                    <input type="number" value={year ?? movie.year} onChange={changeYear}/>
+                                    <input type="number" value={year ?? movie.year} onChange={changeYear} id={"year"}/>
                                 </label>
                                 <label>
-                                    <textarea value={extract ?? movie.extract} onChange={changeExtract}/>
+                                    <textarea rows={10} value={extract ?? movie.extract} onChange={changeExtract} id={"extract"}/>
                                 </label>
                                 <button style={{display: "none"}}>Save</button>
                             </form>

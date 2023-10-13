@@ -24,22 +24,35 @@
     align-items: flex-start;
     justify-content: space-evenly;
 
-    h2 {
+    input, textarea {
+      border: none;
+      font-family: inherit;
+      border-bottom: 1px solid $textColorDark;
+      border-left: 1px solid $textColorDark;
+      padding: .25rem;
+      margin-bottom: 2rem;
+      accent-color: $accentColor;
+    }
+
+
+    h2, #title {
       font-size: $fontSizeXXL;
       max-width: 90%;
       margin-top: 2rem;
+      font-weight: bold;
     }
 
-    > p:first-of-type {
+    > p:first-of-type, #year {
       font-weight: bold;
       font-size: $fontSizeL;
     }
 
-    > p:last-of-type {
-      width: 100%;
+    > p:last-of-type, #extract {
+      width: 95%;
       padding-right: 2rem;
       line-height: 1.25rem;
       text-align: justify;
+      word-break: break-word;
     }
 
     div.logo-container {
