@@ -213,7 +213,7 @@ class MovieControllerIntegrationTest {
     @DirtiesContext
     void toggleIsFavorite_expectIllegalArgumentException() throws Exception {
         boolean favoriteStatement = true;
-        Movie m1 = movieRepo.save(new Movie(
+        movieRepo.save(new Movie(
                 "65250133a87cf67dc7b57cdd",
                 "The Grudge",
                 2020,
