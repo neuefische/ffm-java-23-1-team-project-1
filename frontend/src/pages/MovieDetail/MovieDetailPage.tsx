@@ -92,7 +92,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                 <label>
                                     <textarea value={extract ?? movie.extract} onChange={changeExtract}/>
                                 </label>
-                                <button>Save</button>
+                                <button style={{display: "none"}}>Save</button>
                             </form>
                         }
 
