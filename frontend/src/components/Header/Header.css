@@ -45,7 +45,7 @@ header nav ul a::after {
   height: 2px;
   background-color: purple;
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: right;
   transition: transform 400ms ease-in;
 }
 header nav ul a:hover::after {
