@@ -13,15 +13,15 @@ public class MovieService {
 
     private final MovieRepo movieRepo;
 
-    public List<Movie> getAllMovies () {
+    public List<Movie> getAllMovies() {
         return movieRepo.findAll();
     }
 
-    public Movie getMovieById (String id) throws NoSuchElementException {
+    public Movie getMovieById(String id) throws NoSuchElementException {
         return movieRepo.findById(id).orElseThrow();
     }
 
-    public Movie putMovieById (String id, Movie movie) {
+    public Movie putMovieById(String id, Movie movie) {
         /*
             Take in a whole Movie object, already containing all the desired attributes.
             Then use the (already existing) id to exchange its contents in the DB:
@@ -37,7 +37,7 @@ public class MovieService {
         return movieRepo.save(updatedMovie);
     }
 
-    public Movie toggleIsFavorite(String id, boolean favoriteStatement) throws IllegalArgumentException{
+    public Movie toggleIsFavorite(String id, boolean favoriteStatement) throws IllegalArgumentException {
         Optional<Movie> updatedMovie = movieRepo.findById(id);
 
         if (updatedMovie.isPresent()) {
