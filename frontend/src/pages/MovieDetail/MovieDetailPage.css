@@ -130,7 +130,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .movieDetailContainer {
     flex-direction: column-reverse;
     margin: 0;
@@ -140,12 +140,12 @@
   .movieDetailContainer div.text-container {
     gap: 1rem;
   }
-  .movieDetailContainer div.text-container h2 {
+  .movieDetailContainer div.text-container h2, .movieDetailContainer div.text-container #title {
     font-size: 2rem;
     max-width: 100%;
     margin-top: 1rem;
   }
-  .movieDetailContainer div.text-container p:first-of-type {
+  .movieDetailContainer div.text-container > p:first-of-type, .movieDetailContainer div.text-container #year {
     color: gray;
     font-size: 1rem;
   }

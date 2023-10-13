@@ -162,7 +162,7 @@
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .movieDetailContainer {
     flex-direction: column-reverse;
     margin: 0;
@@ -173,13 +173,13 @@
     div.text-container {
       gap: 1rem;
 
-      h2 {
+      h2, #title {
         font-size: $fontSizeXL;
         max-width: 100%;
         margin-top: 1rem;
       }
 
-      p:first-of-type {
+      > p:first-of-type, #year {
         color: $textColorMedium;
         font-size: $fontSizeM;
       }
@@ -188,5 +188,7 @@
         display: none;
       }
     }
+
   }
+
 }
