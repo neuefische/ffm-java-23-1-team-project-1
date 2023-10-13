@@ -137,7 +137,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void toggleIsFavorite_expectIsFavoriteHasChangeToTrue(){
+    void toggleIsFavorite_expectIsFavoriteHasChangedToTrue(){
 
         //GIVEN
         Movie m1Update = new Movie(m1.get_id(), m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
@@ -166,7 +166,7 @@ class MovieServiceTest {
     void toggleIsFavorite_expectIllegalArgumentException(){
 
         //GIVEN
-        String id = m1.get_id();
+        String id = "quatschId";
         Movie m1Update = new Movie(id, m1.getTitle(), m1.getYear(), m1.getExtract(), m1.getThumbnail(), true);
         boolean updateFavorite = m1Update.getIsFavorite();
 

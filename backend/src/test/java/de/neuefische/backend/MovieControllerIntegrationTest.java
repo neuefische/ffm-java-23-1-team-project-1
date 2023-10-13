@@ -183,7 +183,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
-    void toggleIsFavorite_expectIsFavoriteHasChangeToTrue() throws Exception {
+    void toggleIsFavorite_expectIsFavoriteHasChangedToTrue() throws Exception {
         boolean favoriteStatement = true;
         Movie m1 = movieRepo.save(new Movie(
                 "65250133a87cf67dc7b57cdd",
