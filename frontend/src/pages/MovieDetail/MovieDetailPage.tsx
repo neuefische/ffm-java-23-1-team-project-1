@@ -19,11 +19,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
     const {id} = useParams()
 
     useEffect(() => {
-        axios.get(`/api/movies/${id}`)
-            .then(response => {
-                setMovie(response.data)
-            })
-            .catch(error => console.log(error))
+      getMovies()
     }, [props.favoriteState]);
 
     function getMovies() {
@@ -129,4 +125,3 @@ export default function MovieDetailPage(props: MovieDetailProps) {
     </>)
 
 }
-
