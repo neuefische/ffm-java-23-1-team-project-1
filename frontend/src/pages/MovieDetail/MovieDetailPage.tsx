@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Movie} from "../../assets/MovieEntities.ts";
@@ -8,12 +8,12 @@ import "./MovieDetailPage.css"
 type MovieDetailProps = {
     toggleFavorite: (id: string, favoriteStatement: boolean) => void
     favoriteState: Movie | undefined
+    updateFunction : (id:string) => void
 }
 export default function MovieDetailPage(props: MovieDetailProps) {
     const [movie, setMovie] = useState<Movie>()
     const {id} = useParams()
 
-const navigate = useNavigate()
     useEffect(() => {
         axios.get(`/api/movies/${id}`)
             .then(response => {
@@ -22,10 +22,6 @@ const navigate = useNavigate()
             .catch(error => console.log(error))
     }, [props.favoriteState]);
 
-    function deleteMovieById () {
-        axios.delete(`/api/movies/${id}`)
-            navigate("/movies")
-    }
 
 
     return (<>
@@ -44,7 +40,7 @@ const navigate = useNavigate()
                                 alt={"logo"}/></a>
                             <div>
                                 <p>Edit</p>
-                                <p onClick={() => deleteMovieById}>
+                                <p onClick={() => props.updateFunction(movie?._id)}>
                                     <svg width="37" height="50" viewBox="0 0 37 50" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
