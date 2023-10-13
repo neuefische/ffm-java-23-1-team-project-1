@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import axios from "axios";
 import {Movie} from "../../assets/MovieEntities.ts";
 
@@ -10,10 +10,13 @@ type MovieDetailProps = {
     favoriteState: Movie | undefined
 }
 export default function MovieDetailPage(props: MovieDetailProps) {
-    const [movie, setMovie] = useState<Movie>()
 
+    const [movie, setMovie] = useState<Movie | undefined>(props.favoriteState)
+    const [isBeingEdited, setIsBeingEdited] = useState(true)
+    const [title, setTitle] = useState<String>(movie?.title as String)
+    const [year, setYear] = useState<number>()
+    const [extract, setExtract] = useState<string>()
     const {id} = useParams()
-
 
     useEffect(() => {
         axios.get(`/api/movies/${id}`)
@@ -23,23 +26,77 @@ export default function MovieDetailPage(props: MovieDetailProps) {
             .catch(error => console.log(error))
     }, [props.favoriteState]);
 
+    function getMovies() {
+        axios.get(`/api/movies/${id}`)
+            .then(response => {
+                setMovie(response.data)
+            })
+            .catch(error => console.log(error))
+    }
+
+    function submitEditedMovie(movie : Movie) {
+        axios.put("/api/movies/"+id, {
+            ...movie,
+            title: title,
+            year: year,
+            extract: extract
+        })
+            .then((response) => {setMovie(response.data)})
+        setIsBeingEdited(false)
+
+    }
+
+    function changeTitle(event: ChangeEvent<HTMLInputElement>) {
+        const newTitle : string = event.target.value;
+            setTitle(newTitle);
+    }
+    function changeYear(event: ChangeEvent<HTMLInputElement>) {
+        const newYear :number = Number(event.target.value);
+        setYear(newYear);
+    }
+
+  const changeExtract = (event: ChangeEvent<HTMLTextAreaElement>) => {
+      const newExtract : string = event.target.value.toString();
+      setExtract(newExtract);
+    };
 
     return (<>
         {movie &&
             <div className="container">
                 <article className="movieDetailContainer">
                     <div className="text-container">
-                        <h2>{movie.title}</h2>
-                        <p>{movie.year}</p>
+                        {(!isBeingEdited)
+                            ? <>
+                                <h2>{movie.title}</h2>
+                                <p>{movie.year}</p>
+                                <p>{movie.extract}</p>
+                            </>
+                            : <form>
+                                <label>
+                                    <input type="text" value={movie.title} onChange={changeTitle}/>
+                                </label>
+                                <label>
+                                    <input type="number" value={movie.year} onChange={changeYear}/>
+                                </label>
+                                <label>
+                                    <textarea value={movie.extract} onChange={changeExtract}/>
+                                </label>
+                            </form>
+                        }
 
-                        <p>{movie.extract}</p>
                         <div className="logo-container">
                             <a target={"_blank"}
                                href={`https://www.youtube.com/results?search_query=${movie.title}+trailer+${movie.year}`}><img
                                 src={"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/120px-YouTube_full-color_icon_%282017%29.svg.png"}
                                 alt={"logo"}/></a>
                             <div>
-                                <p>Edit</p>
+                                {isBeingEdited
+                                    ? <p onClick={() => {
+                                        submitEditedMovie
+                                    }}>Save</p>
+                                    : <p onClick={() => {
+                                        setIsBeingEdited(true)
+                                    }}>Edit</p>}
                                 <p>
                                     <svg width="37" height="50" viewBox="0 0 37 50" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +111,9 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                     </div>
                     <div className="poster-container">
                         <img className="poster" src={movie.thumbnail} alt={movie.title}/>
-                        <svg  className={"herzSvg"}  onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)} width="25" height="35"
+                        <svg className={"herzSvg"} onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)}
+                             width="25"
+                             height="35"
                              xmlns="http://www.w3.org/2000/svg">
                             <path className={movie.isFavorite
                                 ? "isFavoriteIsTrue"
