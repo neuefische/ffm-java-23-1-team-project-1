@@ -208,8 +208,5 @@ class MovieServiceTest {
         verify(movieRepo, times(1)).deleteById(id);
         assertEquals(expected, actual);
     }
-
-
-
 }
 
