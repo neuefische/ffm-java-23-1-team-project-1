@@ -227,4 +227,40 @@ class MovieControllerIntegrationTest {
                         "IllegalArgument! Ein oder mehrere Übergabewerte sind falsch."
                 ));
     }
+
+    @Test
+    @DirtiesContext
+    void deleteMovieById_expectDeleteMessage() throws Exception {
+
+        String id = "65250133a87cf67dc7b57cdd";
+
+        movieRepo.save(new Movie(
+                "65250133a87cf67dc7b57cdd",
+                "The Grudge",
+                2020,
+                "The Grudge is a 2020 American psychological supernatural horror film...",
+                "https://upload.wikimedia.org/wikipedia/en/3/34/The_Grudge_2020_Poster.jpeg"
+        ));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/movies/" + id))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers
+                        .content()
+                        .string("Movie with id: 65250133a87cf67dc7b57cdd was deleted.")
+                );
+    }
+
+    @Test
+    @DirtiesContext
+    void deleteMovieById_expectIdNotFoundMessage() throws Exception {
+
+        String id = "quatschId";
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/movies/" + id))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers
+                        .content()
+                        .string("die ID existiert nicht")
+                );
+    }
 }
