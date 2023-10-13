@@ -48,7 +48,11 @@ public class MovieService {
     }
 
     public String deleteMovieById(String id) {
-       movieRepo.deleteById(id);
-       return "Movie with id: "+ id + " was deleted.";
+
+        if (movieRepo.existsById(id)) {
+            movieRepo.deleteById(id);
+            return "Movie with id: " + id + " was deleted.";
+        }
+        return "die ID existiert nicht";
     }
 }
