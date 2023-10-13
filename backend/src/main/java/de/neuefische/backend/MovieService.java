@@ -46,4 +46,9 @@ public class MovieService {
             throw new IllegalArgumentException();
         }
     }
+
+    public String deleteMovieById(String id) {
+       movieRepo.deleteById(id);
+       return "Movie with id: "+ id + " was deleted.";
+    }
 }

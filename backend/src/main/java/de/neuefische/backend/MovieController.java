@@ -36,6 +36,11 @@ public class MovieController {
         return movieService.toggleIsFavorite(id, favoriteStatement);
     }
 
+    @DeleteMapping("/movies/{id}")
+    public String deleteMovieById(@PathVariable String id) {
+        return movieService.deleteMovieById(id);
+    }
+
 
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException() {
