@@ -74,7 +74,7 @@
   cursor: pointer;
   padding: 0 1.5rem;
 }
-.movieDetailContainer div.text-container div.logo-container div p:first-of-type {
+.movieDetailContainer div.text-container div.logo-container div p.klickPTag {
   font-size: 1.5rem;
   box-shadow: 0 0 12px -3px gray;
 }
@@ -89,7 +89,7 @@
 .movieDetailContainer div.text-container div.logo-container div p:active {
   scale: 0.9;
 }
-.movieDetailContainer div.text-container div.logo-container div p:active:first-of-type {
+.movieDetailContainer div.text-container div.logo-container div p:active.klickPTag {
   box-shadow: 0 0 5px -1px gray;
 }
 .movieDetailContainer div.text-container div.logo-container div p:active:last-of-type {

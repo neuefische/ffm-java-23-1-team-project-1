@@ -83,7 +83,7 @@
           cursor: pointer;
           padding: 0 1.5rem;
 
-          &:first-of-type {
+          &.klickPTag {
             font-size: $fontSizeL;
             box-shadow: 0 0 12px -3px $textColorMedium;
 
@@ -102,9 +102,10 @@
           &:active {
             scale: .9;
 
-            &:first-of-type {
+            &.klickPTag {
               box-shadow: 0 0 5px -1px $textColorMedium
             }
+
             &:last-of-type {
               filter: drop-shadow(1px 1px 2px $textColorMedium);
             }
