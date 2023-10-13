@@ -13,7 +13,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
     const [movie, setMovie] = useState<Movie>()
     const {id} = useParams()
 
-
+const navigate = useNavigate()
     useEffect(() => {
         axios.get(`/api/movies/${id}`)
             .then(response => {
