@@ -31,6 +31,11 @@ public class MovieController {
         return movieService.putMovieById(id, movie);
     }
 
+    @PatchMapping("/movies/{id}")
+    public Movie toggleIsFavorite(@PathVariable String id, @RequestParam boolean favoriteStatement) {
+        return movieService.toggleIsFavorite(id, favoriteStatement);
+    }
+
 
     @ExceptionHandler(NoSuchElementException.class)
     public String handleNoSuchElementException() {
@@ -41,6 +46,11 @@ public class MovieController {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public String handleHttpMessageNotReadableException(Exception e) {
         return e.toString();
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String handleIllegalArgumentException() {
+        return "IllegalArgument! Ein oder mehrere Übergabewerte sind falsch.";
     }
 
    /* @ExceptionHandler(Exception.class)

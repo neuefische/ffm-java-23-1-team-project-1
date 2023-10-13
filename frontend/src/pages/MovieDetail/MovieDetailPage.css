@@ -64,9 +64,23 @@
   display: flex;
   gap: 1rem;
 }
+.movieDetailContainer div.text-container div.logo-container div > * {
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+}
 .movieDetailContainer div.text-container div.logo-container div p {
   font-size: 2rem;
   cursor: pointer;
+  padding: 0 1.5rem;
+}
+.movieDetailContainer div.text-container div.logo-container div p:first-of-type {
+  font-size: 1.5rem;
+  box-shadow: 0 0 12px -3px gray;
+}
+.movieDetailContainer div.text-container div.logo-container div p:last-of-type {
+  filter: drop-shadow(2px 2px 2px gray);
+  padding-right: 0;
 }
 .movieDetailContainer div.text-container div.logo-container div p::selection {
   background-color: inherit;
@@ -74,6 +88,12 @@
 }
 .movieDetailContainer div.text-container div.logo-container div p:active {
   scale: 0.9;
+}
+.movieDetailContainer div.text-container div.logo-container div p:active:first-of-type {
+  box-shadow: 0 0 5px -1px gray;
+}
+.movieDetailContainer div.text-container div.logo-container div p:active:last-of-type {
+  filter: drop-shadow(1px 1px 2px gray);
 }
 .movieDetailContainer div.poster-container {
   position: relative;
@@ -97,15 +117,6 @@
   stroke-width: 1px;
   scale: 1.5;
   cursor: pointer;
-}
-.movieDetailContainer div.poster-container svg path {
-  fill: none;
-}
-.movieDetailContainer div.poster-container svg:hover, .movieDetailContainer div.poster-container svg:focus-visible {
-  stroke: black;
-}
-.movieDetailContainer div.poster-container svg:hover path, .movieDetailContainer div.poster-container svg:focus-visible path {
-  fill: purple;
 }
 
 @media (max-width: 650px) {

@@ -1,0 +1,42 @@
+@import "../../assets/Variables";
+
+.favoriteComponent {
+
+
+  article {
+
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: .5rem;
+
+
+
+      li {
+        background-color: $secondaryColor;
+        height: 75px;
+        display: grid;
+        grid-template-columns: 50px auto;
+        align-items: center;
+        padding: .5rem;
+        margin-right: 2rem;
+
+        img {
+          height: 100%;
+          width: 40px;
+          object-fit: cover;
+        }
+
+        p {
+          font-size: $fontSizeL;
+
+          span {
+            font-size: $fontSizeM;
+          }
+        }
+      }
+    }
+  }
+}

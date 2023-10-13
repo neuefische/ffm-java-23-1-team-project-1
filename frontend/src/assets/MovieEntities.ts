@@ -3,6 +3,7 @@ export type Movie = {
     title: string,
     year: number,
     extract: string,
-    thumbnail: string
+    thumbnail: string,
+    isFavorite: boolean
 
 }

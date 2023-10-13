@@ -1,17 +1,45 @@
 @import "./Variables.scss";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: $primaryColor;
   font-family: $fontFamily;
 }
+
 h1 {
   text-align: center;
 }
+
 *:not(:empty)::selection {
   color: $textColorLight;
   background-color: $accentColor;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/*Herz - svg*/
+.herzSvg {
+  transition: filter 250ms ease;
+
+  &:hover {
+    filter: drop-shadow(2px 2px 4px $textColorMedium);
+  }
+
+  &:active {
+    filter: drop-shadow(1px 1px 1px $textColorMedium);
+  }
+}
+
+.isFavoriteIsFalse {
+  fill: none;
+}
+
+.isFavoriteIsTrue {
+  fill: $accentColor;
 }

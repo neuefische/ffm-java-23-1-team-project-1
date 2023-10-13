@@ -1,6 +1,7 @@
 package de.neuefische.backend;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.With;
 
 @Data
 public class Movie {
@@ -11,6 +12,7 @@ public class Movie {
     private @NonNull int year;
     private String extract;
     private String thumbnail;
+    @With
     private boolean isFavorite;
 
     // CONSTRUCTORS:

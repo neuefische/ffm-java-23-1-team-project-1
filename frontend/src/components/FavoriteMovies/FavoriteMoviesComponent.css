@@ -1,0 +1,32 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
+.favoriteComponent article ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 0.5rem;
+}
+.favoriteComponent article ul li {
+  background-color: #fff;
+  height: 75px;
+  display: grid;
+  grid-template-columns: 50px auto;
+  align-items: center;
+  padding: 0.5rem;
+  margin-right: 2rem;
+}
+.favoriteComponent article ul li img {
+  height: 100%;
+  width: 40px;
+  object-fit: cover;
+}
+.favoriteComponent article ul li p {
+  font-size: 1.5rem;
+}
+.favoriteComponent article ul li p span {
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=FavoriteMoviesComponent.css.map */
