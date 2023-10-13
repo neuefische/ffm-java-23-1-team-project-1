@@ -1,4 +1,4 @@
-@import "../assets/Variables.scss";
+@import "../../assets/Variables";
 
 .container {
   display: flex;
@@ -72,9 +72,27 @@
         display: flex;
         gap: 1rem;
 
+        > * {
+          display: grid;
+          place-items: center;
+          border-radius: 1rem;
+        }
+
         p {
           font-size: $fontSizeXL;
           cursor: pointer;
+          padding: 0 1.5rem;
+
+          &:first-of-type {
+            font-size: $fontSizeL;
+            box-shadow: 0 0 12px -3px $textColorMedium;
+
+          }
+
+          &:last-of-type {
+            filter: drop-shadow(2px 2px 2px $textColorMedium);
+            padding-right: 0;
+          }
 
           &::selection {
             background-color: inherit;
@@ -83,6 +101,13 @@
 
           &:active {
             scale: .9;
+
+            &:first-of-type {
+              box-shadow: 0 0 5px -1px $textColorMedium
+            }
+            &:last-of-type {
+              filter: drop-shadow(1px 1px 2px $textColorMedium);
+            }
           }
         }
 
@@ -116,7 +141,6 @@
       stroke-width: 1px;
       scale: 1.5;
       cursor: pointer;
-
 
     }
   }

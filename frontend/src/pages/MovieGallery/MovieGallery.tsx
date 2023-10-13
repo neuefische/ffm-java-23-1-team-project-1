@@ -1,5 +1,6 @@
-import {Movie} from "../MovieEntities.ts";
-import MovieCard from "./MovieCard.tsx";
+import {Movie} from "../../assets/MovieEntities.ts";
+import MovieCard from "../../components/MovieCard/MovieCard.tsx";
+import "./MovieGallery.css"
 
 type MovieGalleryProps = {
     movies: Movie[],

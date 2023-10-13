@@ -1,4 +1,4 @@
-@import "../assets/Variables.scss";
+@import "../../assets/Variables";
 
 .movieCard {
   width: 300px;
@@ -14,8 +14,7 @@
     position: relative;
 
     a {
-      text-decoration: none;
-      color: $textColorDark;
+
 
       display: grid;
       grid-template-rows: 2.5fr 1fr;
@@ -28,6 +27,7 @@
           text-decoration: underline;
         }
       }
+
 
 
       div:first-of-type {
@@ -83,12 +83,4 @@
 
 
   }
-}
-
-
-.movieGallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }

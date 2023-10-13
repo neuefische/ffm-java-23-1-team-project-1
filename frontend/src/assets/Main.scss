@@ -19,13 +19,27 @@ h1 {
   color: $textColorLight;
   background-color: $accentColor;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 /*Herz - svg*/
+.herzSvg {
+  transition: filter 250ms ease;
 
-  .isFavoriteIsFalse {
-    fill: none;
+  &:hover {
+    filter: drop-shadow(2px 2px 4px $textColorMedium);
   }
 
-  .isFavoriteIsTrue {
-    fill: $accentColor;
+  &:active {
+    filter: drop-shadow(1px 1px 1px $textColorMedium);
   }
+}
+
+.isFavoriteIsFalse {
+  fill: none;
+}
+
+.isFavoriteIsTrue {
+  fill: $accentColor;
+}

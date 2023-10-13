@@ -17,8 +17,6 @@
   /*Styling vom Herzen*/
 }
 .movieCard .movieCard-container a {
-  text-decoration: none;
-  color: black;
   display: grid;
   grid-template-rows: 2.5fr 1fr;
   height: 100%;
@@ -62,13 +60,6 @@
   stroke: black;
   stroke-width: 1.4px;
   /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
-}
-
-.movieGallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 /*# sourceMappingURL=MovieCard.css.map */

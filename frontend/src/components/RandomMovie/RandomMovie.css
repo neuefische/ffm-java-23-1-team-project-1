@@ -1,0 +1,30 @@
+/* === Fonts ===*/
+/* Font-Family*/
+/*font-sizes*/
+/* === Colours ===*/
+.randomMovie article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.randomMovie article img {
+  width: 60%;
+  max-width: 300px;
+  border: 3px solid transparent;
+  outline: 2px solid white;
+}
+.randomMovie article h4 {
+  font-size: 1.5rem;
+}
+.randomMovie article p {
+  text-align: center;
+  width: 90%;
+}
+.randomMovie article p:last-of-type {
+  font-size: 0.75rem;
+}
+
+/*# sourceMappingURL=RandomMovie.css.map */

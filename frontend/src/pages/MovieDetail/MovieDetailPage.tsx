@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Movie} from "../MovieEntities.ts";
+import {Movie} from "../../assets/MovieEntities.ts";
 
 import "./MovieDetailPage.css"
 
@@ -39,7 +39,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                 src={"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/120px-YouTube_full-color_icon_%282017%29.svg.png"}
                                 alt={"logo"}/></a>
                             <div>
-                                <button>Edit</button>
+                                <p>Edit</p>
                                 <p>
                                     <svg width="37" height="50" viewBox="0 0 37 50" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                     </div>
                     <div className="poster-container">
                         <img className="poster" src={movie.thumbnail} alt={movie.title}/>
-                        <svg onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)} width="25" height="35"
+                        <svg  className={"herzSvg"}  onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)} width="25" height="35"
                              xmlns="http://www.w3.org/2000/svg">
                             <path className={movie.isFavorite
                                 ? "isFavoriteIsTrue"
