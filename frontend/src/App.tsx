@@ -9,12 +9,13 @@ import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage.tsx";
 import Header from "./components/Header/Header.tsx";
 import StartPage from "./pages/StartPage/StartPage.tsx";
 import FavoriteGallery from "./pages/MovieGallery/FavoriteGallery.tsx";
+import {UserProfile} from "./assets/UserProfileEntities.ts";
 
 export default function App() {
 
     const [movies, setMovies] = useState<Movie[]>([])
     const [favoriteState , setFavoriteState] = useState<Movie>()
-    const [userId, setUserId] = useState<string>("")
+    const [userProfile, setUserProfile] = useState<UserProfile>()
 
     useEffect(
         fetchMovieData, [favoriteState]
@@ -43,25 +44,27 @@ export default function App() {
                 console.log(reason)
             })
     }
-
     function login() {
-        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
-
-        window.open(host + '/oauth2/authorization/github', '_blank')
+        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080' : window.location.origin;
+        window.open(host + '/oauth2/authorization/github', '_self');
     }
 
     function me() {
         axios.get("/api/user/me")
             .then(response => {
-                setUserId(response.data)
+                setUserProfile(response.data);
             })
+            .catch(error => {
+                console.error('Fehler beim Abrufen des Benutzerprofils:', error);
+            });
     }
+
 
     return (
         <>
             <Header/>
             <button onClick={login}>Log in with GitHub</button>
-            <p>eingeloggt als {userId}</p>
+            <p>eingeloggt als {userProfile?.name}</p>
             <Routes>
                 <Route path={"/"} element={<StartPage movies={movies}/>}/>
                 <Route path={"/movies/:id"} element={<MovieDetailPage favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
