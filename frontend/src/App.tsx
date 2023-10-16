@@ -62,9 +62,9 @@ export default function App() {
 
     return (
         <>
-            <Header/>
-            <button onClick={login}>Log in with GitHub</button>
-            <p>eingeloggt als {userProfile?.name}</p>
+            <Header userProfile={userProfile} login={login}/>
+            {/*<button onClick={login}>Log in with GitHub</button>
+            <p>eingeloggt als {userProfile?.name}</p>*/}
             <Routes>
                 <Route path={"/"} element={<StartPage movies={movies}/>}/>
                 <Route path={"/movies/:id"} element={<MovieDetailPage favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
