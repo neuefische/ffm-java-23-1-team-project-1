@@ -8,7 +8,7 @@ import "./MovieDetailPage.css"
 type MovieDetailProps = {
     toggleFavorite: (id: string, favoriteStatement: boolean) => void
     favoriteState: Movie | undefined
-    updateFunction : (id:string) => void
+    updateFunction: (id: string) => void
     onMovieUpdate: () => void
 }
 export default function MovieDetailPage(props: MovieDetailProps) {
@@ -86,13 +86,15 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                             </>
                             : <form onSubmit={(event) => submitEditedMovie(event, movie?._id)}>
                                 <label>
-                                    <input type="text" value={title ?? movie.title} onChange={changeTitle} id={"title"}/>
+                                    <input type="text" value={title ?? movie.title} onChange={changeTitle}
+                                           id={"title"}/>
                                 </label>
                                 <label>
                                     <input type="number" value={year ?? movie.year} onChange={changeYear} id={"year"}/>
                                 </label>
                                 <label>
-                                    <textarea rows={10} value={extract ?? movie.extract} onChange={changeExtract} id={"extract"}/>
+                                    <textarea rows={10} value={extract ?? movie.extract} onChange={changeExtract}
+                                              id={"extract"}/>
                                 </label>
                                 <button style={{display: "none"}}>Save</button>
                             </form>
@@ -133,16 +135,23 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                     </div>
                     <div className="poster-container">
                         <img className="poster" src={movie.thumbnail} alt={movie.title}/>
-                        <svg className={"herzSvg"} onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)}
-                             width="25"
-                             height="35"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path className={movie.isFavorite
-                                ? "isFavoriteIsTrue"
-                                : "isFavoriteIsFalse"}
-                                  d="M12.5 21.4073L2.815 11.7233C1.54 10.4482 0.8379 8.755 0.8379 6.95344C0.832804 5.15186 1.43072 3.45868 2.7006 2.1888C3.97565 0.913756 5.66783 0.210707 7.46941 0.210707C9.271 0.210707 10.9632 0.913756 12.2382 2.1888L12.5 2.45056L12.7618 2.1888C14.0368 0.913756 15.729 0.210707 17.5306 0.210707C19.3322 0.210707 21.0244 0.913756 22.2994 2.1888C23.5693 3.45868 24.1672 5.15186 24.1672 6.95344C24.1672 8.755 23.4651 10.4482 22.1901 11.7233L12.5 21.4073Z"
-                            />
-                        </svg>
+                        {
+                            isBeingEdited
+                                ? ""
+                                :
+                                <svg className={"herzSvg"}
+                                     onClick={() => props.toggleFavorite(movie?._id, !movie.isFavorite)}
+                                     width="25"
+                                     height="35"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path className={movie.isFavorite
+                                        ? "isFavoriteIsTrue"
+                                        : "isFavoriteIsFalse"}
+                                          d="M12.5 21.4073L2.815 11.7233C1.54 10.4482 0.8379 8.755 0.8379 6.95344C0.832804 5.15186 1.43072 3.45868 2.7006 2.1888C3.97565 0.913756 5.66783 0.210707 7.46941 0.210707C9.271 0.210707 10.9632 0.913756 12.2382 2.1888L12.5 2.45056L12.7618 2.1888C14.0368 0.913756 15.729 0.210707 17.5306 0.210707C19.3322 0.210707 21.0244 0.913756 22.2994 2.1888C23.5693 3.45868 24.1672 5.15186 24.1672 6.95344C24.1672 8.755 23.4651 10.4482 22.1901 11.7233L12.5 21.4073Z"
+                                    />
+                                </svg>
+                        }
+
                     </div>
 
                 </article>
