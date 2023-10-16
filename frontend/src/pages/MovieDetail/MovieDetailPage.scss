@@ -24,22 +24,35 @@
     align-items: flex-start;
     justify-content: space-evenly;
 
-    h2 {
+    input, textarea {
+      border: none;
+      font-family: inherit;
+      border-bottom: 1px solid $textColorDark;
+      border-left: 1px solid $textColorDark;
+      padding: .25rem;
+      margin-bottom: 2rem;
+      accent-color: $accentColor;
+    }
+
+
+    h2, #title {
       font-size: $fontSizeXXL;
       max-width: 90%;
       margin-top: 2rem;
+      font-weight: bold;
     }
 
-    > p:first-of-type {
+    > p:first-of-type, #year {
       font-weight: bold;
       font-size: $fontSizeL;
     }
 
-    > p:last-of-type {
-      width: 100%;
+    > p:last-of-type, #extract {
+      width: 95%;
       padding-right: 2rem;
       line-height: 1.25rem;
       text-align: justify;
+      word-break: break-word;
     }
 
     div.logo-container {
@@ -83,7 +96,7 @@
           cursor: pointer;
           padding: 0 1.5rem;
 
-          &:first-of-type {
+          &.klickPTag {
             font-size: $fontSizeL;
             box-shadow: 0 0 12px -3px $textColorMedium;
 
@@ -102,9 +115,10 @@
           &:active {
             scale: .9;
 
-            &:first-of-type {
+            &.klickPTag {
               box-shadow: 0 0 5px -1px $textColorMedium
             }
+
             &:last-of-type {
               filter: drop-shadow(1px 1px 2px $textColorMedium);
             }
@@ -148,7 +162,7 @@
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .movieDetailContainer {
     flex-direction: column-reverse;
     margin: 0;
@@ -159,13 +173,13 @@
     div.text-container {
       gap: 1rem;
 
-      h2 {
+      h2, #title {
         font-size: $fontSizeXL;
         max-width: 100%;
         margin-top: 1rem;
       }
 
-      p:first-of-type {
+      > p:first-of-type, #year {
         color: $textColorMedium;
         font-size: $fontSizeM;
       }
@@ -174,5 +188,7 @@
         display: none;
       }
     }
+
   }
+
 }

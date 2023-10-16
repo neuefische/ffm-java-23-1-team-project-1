@@ -1,8 +1,9 @@
 @import "../../assets/Variables";
 
 .movieCard {
-  width: 300px;
-  height: 300px;
+  $movieCardSize: 300px;
+  width: $movieCardSize;
+  height: $movieCardSize;
   padding: .5rem;
   box-shadow: 0 2px 4px -1px black;
   border-radius: 1rem;
@@ -27,7 +28,6 @@
           text-decoration: underline;
         }
       }
-
 
 
       div:first-of-type {
@@ -82,5 +82,13 @@
     /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
 
 
+  }
+}
+
+@media (max-width: 700px) {
+  .movieCard {
+    $movieCardSize: 200px;
+    width: $movieCardSize;
+    height: $movieCardSize;
   }
 }

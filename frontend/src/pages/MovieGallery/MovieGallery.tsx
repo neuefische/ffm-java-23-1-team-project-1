@@ -4,7 +4,6 @@ import "./MovieGallery.css"
 
 type MovieGalleryProps = {
     movies: Movie[],
-
     toggleFavorite: (id: string, favoriteStatement: boolean) => void
 }
 

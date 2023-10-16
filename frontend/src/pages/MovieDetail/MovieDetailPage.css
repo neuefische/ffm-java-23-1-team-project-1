@@ -26,20 +26,31 @@
   align-items: flex-start;
   justify-content: space-evenly;
 }
-.movieDetailContainer div.text-container h2 {
+.movieDetailContainer div.text-container input, .movieDetailContainer div.text-container textarea {
+  border: none;
+  font-family: inherit;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+  accent-color: purple;
+}
+.movieDetailContainer div.text-container h2, .movieDetailContainer div.text-container #title {
   font-size: 3rem;
   max-width: 90%;
   margin-top: 2rem;
+  font-weight: bold;
 }
-.movieDetailContainer div.text-container > p:first-of-type {
+.movieDetailContainer div.text-container > p:first-of-type, .movieDetailContainer div.text-container #year {
   font-weight: bold;
   font-size: 1.5rem;
 }
-.movieDetailContainer div.text-container > p:last-of-type {
-  width: 100%;
+.movieDetailContainer div.text-container > p:last-of-type, .movieDetailContainer div.text-container #extract {
+  width: 95%;
   padding-right: 2rem;
   line-height: 1.25rem;
   text-align: justify;
+  word-break: break-word;
 }
 .movieDetailContainer div.text-container div.logo-container {
   width: 90%;
@@ -74,7 +85,7 @@
   cursor: pointer;
   padding: 0 1.5rem;
 }
-.movieDetailContainer div.text-container div.logo-container div p:first-of-type {
+.movieDetailContainer div.text-container div.logo-container div p.klickPTag {
   font-size: 1.5rem;
   box-shadow: 0 0 12px -3px gray;
 }
@@ -89,7 +100,7 @@
 .movieDetailContainer div.text-container div.logo-container div p:active {
   scale: 0.9;
 }
-.movieDetailContainer div.text-container div.logo-container div p:active:first-of-type {
+.movieDetailContainer div.text-container div.logo-container div p:active.klickPTag {
   box-shadow: 0 0 5px -1px gray;
 }
 .movieDetailContainer div.text-container div.logo-container div p:active:last-of-type {
@@ -119,7 +130,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
   .movieDetailContainer {
     flex-direction: column-reverse;
     margin: 0;
@@ -129,12 +140,12 @@
   .movieDetailContainer div.text-container {
     gap: 1rem;
   }
-  .movieDetailContainer div.text-container h2 {
+  .movieDetailContainer div.text-container h2, .movieDetailContainer div.text-container #title {
     font-size: 2rem;
     max-width: 100%;
     margin-top: 1rem;
   }
-  .movieDetailContainer div.text-container p:first-of-type {
+  .movieDetailContainer div.text-container > p:first-of-type, .movieDetailContainer div.text-container #year {
     color: gray;
     font-size: 1rem;
   }

@@ -23,7 +23,7 @@ header div a img {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-header div h1 {
+header div a h1 {
   font-size: 3rem;
   cursor: default;
 }
@@ -90,6 +90,18 @@ header nav ul .userProfile-container .logout-btn {
 }
 header nav ul .userProfile-container:hover .logout-btn {
   display: block;
+}
+
+@media (max-width: 700px) {
+  header div a h1 {
+    font-size: 2rem;
+  }
+  header nav ul {
+    flex-direction: column;
+  }
+  header nav ul a {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=Header.css.map */

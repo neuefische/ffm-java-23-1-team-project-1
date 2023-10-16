@@ -21,12 +21,15 @@ header {
         aspect-ratio: 1/ 1;
         object-fit: cover;
       }
+
+      h1 {
+        font-size: $fontSizeXXL;
+        cursor: default;
+
+      }
     }
 
-    h1 {
-      font-size: $fontSizeXXL;
-      cursor: default;
-    }
+
   }
 
   nav {
@@ -110,3 +113,23 @@ header {
     }
   }
 }
+
+@media (max-width: 700px) {
+  header {
+
+    div a h1 {
+      font-size: $fontSizeXL;
+    }
+
+    nav {
+      ul {
+        flex-direction: column;
+
+        a {
+          font-size: $fontSizeM;
+        }
+      }
+    }
+  }
+}
+
