@@ -14,9 +14,14 @@ export default function App() {
 
     const [movies, setMovies] = useState<Movie[]>([])
     const [favoriteState , setFavoriteState] = useState<Movie>()
+    const [userId, setUserId] = useState<string>("")
 
     useEffect(
         fetchMovieData, [favoriteState]
+    )
+
+    useEffect(
+        me, []
     )
 
     function fetchMovieData() {
@@ -39,10 +44,24 @@ export default function App() {
             })
     }
 
+    function login() {
+        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
+
+        window.open(host + '/oauth2/authorization/github', '_blank')
+    }
+
+    function me() {
+        axios.get("/api/user/me")
+            .then(response => {
+                setUserId(response.data)
+            })
+    }
 
     return (
         <>
             <Header/>
+            <button onClick={login}>Log in with GitHub</button>
+            <p>eingeloggt als {userId}</p>
             <Routes>
                 <Route path={"/"} element={<StartPage movies={movies}/>}/>
                 <Route path={"/movies/:id"} element={<MovieDetailPage favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
