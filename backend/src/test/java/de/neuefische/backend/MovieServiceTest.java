@@ -177,5 +177,36 @@ class MovieServiceTest {
         //THEN
         assertThrows(IllegalArgumentException.class, () -> movieService.toggleIsFavorite(id, updateFavorite));
     }
+
+    @Test
+    void deleteMovieById_expectDeleteMessage() {
+        //GIVEN
+        movieRepo.save(m1);
+        String id = "65250133a87cf67dc7b57cdd";
+
+        //WHEN
+        when(movieRepo.existsById(id)).thenReturn(true);
+        doNothing().when(movieRepo).deleteById(id);
+        movieService.deleteMovieById(id);
+
+        // THEN
+        verify(movieRepo, times(1)).deleteById(id);
+    }
+
+    @Test
+    void deleteMovieById_expectIdNotFoundMessage() {
+        //GIVEN
+        String id = "quatschId";
+
+        //WHEN
+        when(movieRepo.existsById(id)).thenReturn(false);
+        movieRepo.deleteById(id);
+        String actual = movieService.deleteMovieById(id);
+        String expected = "die ID existiert nicht";
+
+        // THEN
+        verify(movieRepo, times(1)).deleteById(id);
+        assertEquals(expected, actual);
+    }
 }
 

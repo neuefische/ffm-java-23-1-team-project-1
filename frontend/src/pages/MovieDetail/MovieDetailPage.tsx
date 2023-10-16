@@ -8,6 +8,7 @@ import "./MovieDetailPage.css"
 type MovieDetailProps = {
     toggleFavorite: (id: string, favoriteStatement: boolean) => void
     favoriteState: Movie | undefined
+    updateFunction : (id:string) => void
     onMovieUpdate: () => void
 }
 export default function MovieDetailPage(props: MovieDetailProps) {
@@ -71,6 +72,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
         setExtract(newExtract);
     };
 
+
     return (<>
         {movie &&
             <div className="container">
@@ -102,6 +104,7 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                 src={"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/120px-YouTube_full-color_icon_%282017%29.svg.png"}
                                 alt={"logo"}/></a>
                             <div>
+
                                 {isBeingEdited
                                     ? <>
                                         <p className="klickPTag" onClick={() => setIsBeingEdited(false)}>Cancel</p>
@@ -115,7 +118,8 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                     : <p className="klickPTag" onClick={() => {
                                         setIsBeingEdited(true)
                                     }}>Edit</p>}
-                                <p>
+                                <p onClick={() => props.updateFunction(movie?._id)}>
+
                                     <svg width="37" height="50" viewBox="0 0 37 50" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
