@@ -1,5 +1,10 @@
 @import "../../assets/Variables";
+
 .randomMovie {
+  h3 {
+    text-align: center;
+    color: $accentColor;
+  }
 
   article {
     display: flex;
@@ -16,12 +21,15 @@
       outline: 2px solid $textColorLight;
 
     }
+
     h4 {
-font-size: $fontSizeL;
+      font-size: $fontSizeL;
     }
+
     p {
       text-align: center;
       width: 90%;
+
       &:last-of-type {
 
         font-size: $fontSizeS;
@@ -30,3 +38,24 @@ font-size: $fontSizeL;
   }
 
 }
+
+@media (max-width: 700px) {
+  .randomMovie {
+    h3 {
+      font-size: $fontSizeXL;
+    }
+
+    article {
+      gap: .5rem;
+
+      img {
+        max-width: 200px;
+      }
+    }
+
+    p:last-of-type {
+      display: none;
+    }
+  }
+}
+

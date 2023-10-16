@@ -4,14 +4,16 @@
 
 
   article {
-
+    h3 {
+      text-align: center;
+      color: $accentColor;
+    }
 
     ul {
       display: flex;
       flex-direction: column;
       list-style: none;
       gap: .5rem;
-
 
 
       li {
@@ -34,6 +36,28 @@
 
           span {
             font-size: $fontSizeM;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .favoriteComponent {
+    h3 {
+      font-size: $fontSizeXL;
+    }
+    article {
+      ul {
+        li {
+          margin: 0 2rem;
+
+          p {
+            font-size: $fontSizeM;
+            span {
+              font-size: $fontSizeS;
+            }
           }
         }
       }

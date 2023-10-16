@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {ChangeEvent, useEffect, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import axios from "axios";
 import {Movie} from "../../assets/MovieEntities.ts";
 
@@ -8,18 +8,28 @@ import "./MovieDetailPage.css"
 type MovieDetailProps = {
     toggleFavorite: (id: string, favoriteStatement: boolean) => void
     favoriteState: Movie | undefined
+    onMovieUpdate: () => void
 }
 export default function MovieDetailPage(props: MovieDetailProps) {
 
     const [movie, setMovie] = useState<Movie | undefined>(props.favoriteState)
-    const [isBeingEdited, setIsBeingEdited] = useState(true)
-    const [title, setTitle] = useState<String>(movie?.title as String)
-    const [year, setYear] = useState<number>()
-    const [extract, setExtract] = useState<string>()
+    const [isBeingEdited, setIsBeingEdited] = useState(false)
+    const [title, setTitle] = useState<string>('');
+    const [year, setYear] = useState<number>(0);
+    const [extract, setExtract] = useState<string>('');
+
     const {id} = useParams()
 
     useEffect(() => {
-      getMovies()
+        if (isBeingEdited) {
+            setTitle(movie?.title ?? '');
+            setYear(movie?.year ?? 0);
+            setExtract(movie?.extract ?? '');
+        }
+    }, [isBeingEdited, movie]);
+
+    useEffect(() => {
+        getMovies()
     }, [props.favoriteState]);
 
     function getMovies() {
@@ -30,30 +40,35 @@ export default function MovieDetailPage(props: MovieDetailProps) {
             .catch(error => console.log(error))
     }
 
-    function submitEditedMovie(movie : Movie) {
-        axios.put("/api/movies/"+id, {
+    function submitEditedMovie(event: FormEvent, id: string) {
+        event.preventDefault()
+        axios.put("/api/movies/" + id, {
             ...movie,
             title: title,
             year: year,
             extract: extract
         })
-            .then((response) => {setMovie(response.data)})
+            .then((response) => {
+                setMovie(response.data)
+            })
+            .then(props.onMovieUpdate)
         setIsBeingEdited(false)
 
     }
 
     function changeTitle(event: ChangeEvent<HTMLInputElement>) {
-        const newTitle : string = event.target.value;
-            setTitle(newTitle);
+        const newTitle: string = event.target.value;
+        setTitle(newTitle);
     }
+
     function changeYear(event: ChangeEvent<HTMLInputElement>) {
-        const newYear :number = Number(event.target.value);
+        const newYear: number = Number(event.target.value);
         setYear(newYear);
     }
 
-  const changeExtract = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const newExtract : string = event.target.value.toString();
-      setExtract(newExtract);
+    const changeExtract = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        const newExtract: string = event.target.value.toString();
+        setExtract(newExtract);
     };
 
     return (<>
@@ -67,16 +82,17 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                 <p>{movie.year}</p>
                                 <p>{movie.extract}</p>
                             </>
-                            : <form>
+                            : <form onSubmit={(event) => submitEditedMovie(event, movie?._id)}>
                                 <label>
-                                    <input type="text" value={movie.title} onChange={changeTitle}/>
+                                    <input type="text" value={title ?? movie.title} onChange={changeTitle} id={"title"}/>
                                 </label>
                                 <label>
-                                    <input type="number" value={movie.year} onChange={changeYear}/>
+                                    <input type="number" value={year ?? movie.year} onChange={changeYear} id={"year"}/>
                                 </label>
                                 <label>
-                                    <textarea value={movie.extract} onChange={changeExtract}/>
+                                    <textarea rows={10} value={extract ?? movie.extract} onChange={changeExtract} id={"extract"}/>
                                 </label>
+                                <button style={{display: "none"}}>Save</button>
                             </form>
                         }
 
@@ -87,10 +103,16 @@ export default function MovieDetailPage(props: MovieDetailProps) {
                                 alt={"logo"}/></a>
                             <div>
                                 {isBeingEdited
-                                    ? <p onClick={() => {
-                                        submitEditedMovie
-                                    }}>Save</p>
-                                    : <p onClick={() => {
+                                    ? <>
+                                        <p className="klickPTag" onClick={() => setIsBeingEdited(false)}>Cancel</p>
+                                        <p className="klickPTag" onClick={(event) => {
+                                            if (event) {
+                                                submitEditedMovie(event, movie?._id);
+                                            }
+                                        }}>Save</p>
+
+                                    </>
+                                    : <p className="klickPTag" onClick={() => {
                                         setIsBeingEdited(true)
                                     }}>Edit</p>}
                                 <p>
