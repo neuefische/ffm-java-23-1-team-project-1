@@ -9,8 +9,9 @@
 }
 
 body {
-  background-color: #bebebe;
+  background: linear-gradient(135deg, #DF9FF5, #8ADCFF);
   font-family: sans-serif;
+  height: 100vh;
 }
 
 h1 {
