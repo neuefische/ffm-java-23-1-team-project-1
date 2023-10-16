@@ -62,4 +62,11 @@
   /*keine Füllung, erst auf Aktion, in diesem Fall Hover. Später vielleicht mit className anpassen, wenn es unter Favoriten ist...*/
 }
 
+@media (max-width: 700px) {
+  .movieCard {
+    width: 200px;
+    height: 200px;
+  }
+}
+
 /*# sourceMappingURL=MovieCard.css.map */

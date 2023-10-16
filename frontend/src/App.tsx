@@ -52,11 +52,13 @@ export default function App() {
             <Header/>
             <Routes>
                 <Route path={"/"} element={<StartPage movies={movies}/>}/>
+
                 <Route path={"/movies/:id"}
-                       element={<MovieDetailPage updateFunction={deleteMovieById} favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
+                       element={<MovieDetailPage updateFunction={deleteMovieById} onMovieUpdate={fetchMovieData} favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
                 <Route path={"/movies"} element={<MovieGallery movies={movies} toggleFavorite={toggleFavorite}/>}/>
                 <Route path={"/favorites"}
                        element={<FavoriteGallery movies={movies} toggleFavorite={toggleFavorite}/>}/>
+
             </Routes>
         </>
     )

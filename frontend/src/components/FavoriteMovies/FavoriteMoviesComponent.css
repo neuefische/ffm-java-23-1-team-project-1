@@ -2,6 +2,10 @@
 /* Font-Family*/
 /*font-sizes*/
 /* === Colours ===*/
+.favoriteComponent article h3 {
+  text-align: center;
+  color: purple;
+}
 .favoriteComponent article ul {
   display: flex;
   flex-direction: column;
@@ -27,6 +31,21 @@
 }
 .favoriteComponent article ul li p span {
   font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .favoriteComponent h3 {
+    font-size: 2rem;
+  }
+  .favoriteComponent article ul li {
+    margin: 0 2rem;
+  }
+  .favoriteComponent article ul li p {
+    font-size: 1rem;
+  }
+  .favoriteComponent article ul li p span {
+    font-size: 0.75rem;
+  }
 }
 
 /*# sourceMappingURL=FavoriteMoviesComponent.css.map */
