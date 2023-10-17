@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -20,6 +23,9 @@ class MovieControllerIntegrationTest {
 
     @Autowired
     MovieRepo movieRepo;
+
+    @MockBean
+    ClientRegistrationRepository clientRegistrationRepository;
 
     @Test
     @DirtiesContext
@@ -116,6 +122,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void updateMovieById_expectUpdatedMovieObject() throws Exception {
         Movie m1 = movieRepo.save(new Movie(
                 "65250133a87cf67dc7b57cdd",
@@ -154,6 +161,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void putMovieById_expectHttpMessageNotReadableException() throws Exception {
         Movie m1 = movieRepo.save(new Movie(
                 "65250133a87cf67dc7b57cdd",
@@ -183,6 +191,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void toggleIsFavorite_expectIsFavoriteHasChangedToTrue() throws Exception {
         boolean favoriteStatement = true;
         Movie m1 = movieRepo.save(new Movie(
@@ -211,6 +220,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void toggleIsFavorite_expectIllegalArgumentException() throws Exception {
         boolean favoriteStatement = true;
         movieRepo.save(new Movie(
@@ -230,6 +240,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void deleteMovieById_expectDeleteMessage() throws Exception {
 
         String id = "65250133a87cf67dc7b57cdd";
@@ -252,6 +263,7 @@ class MovieControllerIntegrationTest {
 
     @Test
     @DirtiesContext
+    @WithMockUser
     void deleteMovieById_expectIdNotFoundMessage() throws Exception {
 
         String id = "quatschId";
