@@ -5,6 +5,7 @@ import {UserProfile} from "../../assets/UserProfileEntities.ts";
 type headerProps = {
     userProfile: UserProfile | undefined
     login: () => void
+    logout: () => void
 }
 export default function Header(props: headerProps) {
     return (
@@ -28,7 +29,7 @@ export default function Header(props: headerProps) {
                             <div className="userProfile-container">
                                 <button>{props.userProfile?.name}<img src={props.userProfile.avatarUrl} alt="avatar"/>
                                 </button>
-                                <button className="logout-btn">Logout</button>
+                                <button className="logout-btn" onClick={props.logout}>Logout</button>
                             </div>
                             :
                             <div className="userProfile-container">

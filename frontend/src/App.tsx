@@ -33,7 +33,7 @@ export default function App() {
                 setMovies(response.data)
             })
             .catch(reason => {
-                console.log(reason)
+                console.error(reason)
             })
     }
 
@@ -43,12 +43,20 @@ export default function App() {
                 setFavoriteState(response.data)
             })
             .catch(reason => {
-                console.log(reason)
+                console.error(reason)
             })
     }
     function login() {
         const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080' : window.location.origin;
         window.open(host + '/oauth2/authorization/github', '_self');
+    }
+
+    function logout() {
+        axios.post("/api/logout")
+            .then(() => {
+                setUserProfile(undefined)
+            })
+            .catch(reason => {console.error(reason)})
     }
 
     function me() {
@@ -71,9 +79,7 @@ export default function App() {
 
     return (
         <>
-            <Header userProfile={userProfile} login={login}/>
-            {/*<button onClick={login}>Log in with GitHub</button>
-            <p>eingeloggt als {userProfile?.name}</p>*/}
+            <Header userProfile={userProfile} login={login} logout={logout}/>
             <Routes>
                 <Route path={"/"} element={<StartPage movies={movies}/>}/>
 
