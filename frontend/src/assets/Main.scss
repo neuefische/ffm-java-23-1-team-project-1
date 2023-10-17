@@ -7,8 +7,9 @@
 }
 
 body {
-  background-color: $primaryColor;
+  background: $background-gradient;
   font-family: $fontFamily;
+  height: 100vh;
 }
 
 h1 {

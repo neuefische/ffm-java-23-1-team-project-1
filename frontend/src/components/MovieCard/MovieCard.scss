@@ -44,6 +44,12 @@
           transition: all 250ms ease-in;
         }
 
+        &:hover img {
+          scale: 1.1;
+          rotate: 2deg;
+
+        }
+
       }
 
       div:last-of-type {

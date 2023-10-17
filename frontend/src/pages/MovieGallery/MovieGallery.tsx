@@ -13,7 +13,7 @@ export default function MovieGallery(props: MovieGalleryProps) {
     return (
         <div className="movieGallery">
             {
-                props.movies.slice(0, 20).map(
+                props.movies.slice(0, 100).map(
                     (mov) => <MovieCard key={mov._id} movie={mov}  toggleFavorite={props.toggleFavorite}/>
                 )
             }

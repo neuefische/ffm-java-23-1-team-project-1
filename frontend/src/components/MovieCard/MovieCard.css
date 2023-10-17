@@ -37,6 +37,10 @@
   object-fit: cover;
   transition: all 250ms ease-in;
 }
+.movieCard .movieCard-container a div:first-of-type:hover img {
+  scale: 1.1;
+  rotate: 2deg;
+}
 .movieCard .movieCard-container a div:last-of-type {
   display: flex;
   flex-direction: column;

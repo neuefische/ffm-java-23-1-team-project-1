@@ -19,9 +19,10 @@ header div a {
   gap: 1rem;
 }
 header div a img {
-  height: 50%;
+  height: 60%;
   aspect-ratio: 1/1;
   object-fit: cover;
+  border-radius: 80% 200%;
 }
 header div a h1 {
   font-size: 3rem;
