@@ -10,12 +10,12 @@ import Header from "./components/Header/Header.tsx";
 import StartPage from "./pages/StartPage/StartPage.tsx";
 import FavoriteGallery from "./pages/MovieGallery/FavoriteGallery.tsx";
 import {UserProfile} from "./assets/UserProfileEntities.ts";
+import ProtectedRoutes from "./assets/ProtectedRoutes.tsx";
 
 export default function App() {
 
     const [movies, setMovies] = useState<Movie[]>([])
-
-    const [favoriteState , setFavoriteState] = useState<Movie>()
+    const [favoriteState, setFavoriteState] = useState<Movie>()
     const [userProfile, setUserProfile] = useState<UserProfile>()
 
 
@@ -46,6 +46,7 @@ export default function App() {
                 console.error(reason)
             })
     }
+
     function login() {
         const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080' : window.location.origin;
         window.open(host + '/oauth2/authorization/github', '_self');
@@ -56,7 +57,9 @@ export default function App() {
             .then(() => {
                 setUserProfile(undefined)
             })
-            .catch(reason => {console.error(reason)})
+            .catch(reason => {
+                console.error(reason)
+            })
     }
 
     function me() {
@@ -70,10 +73,15 @@ export default function App() {
     }
 
     const navigate = useNavigate()
-    function deleteMovieById (id: string) {
+
+    function deleteMovieById(id: string) {
         axios.delete(`/api/movies/${id}`)
-            .then(()=> {navigate("/movies")})
-            .then(() => {fetchMovieData()})
+            .then(() => {
+                navigate("/movies")
+            })
+            .then(() => {
+                fetchMovieData()
+            })
     }
 
 
@@ -81,14 +89,16 @@ export default function App() {
         <>
             <Header userProfile={userProfile} login={login} logout={logout}/>
             <Routes>
-                <Route path={"/"} element={<StartPage movies={movies}/>}/>
+                <Route path={"/"} element={<StartPage movies={movies} userProfile={userProfile}/>}/>
 
                 <Route path={"/movies/:id"}
-                       element={<MovieDetailPage updateFunction={deleteMovieById} onMovieUpdate={fetchMovieData} favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
+                       element={<MovieDetailPage updateFunction={deleteMovieById} onMovieUpdate={fetchMovieData}
+                                                 favoriteState={favoriteState} toggleFavorite={toggleFavorite}/>}/>
                 <Route path={"/movies"} element={<MovieGallery movies={movies} toggleFavorite={toggleFavorite}/>}/>
-                <Route path={"/favorites"}
-                       element={<FavoriteGallery movies={movies} toggleFavorite={toggleFavorite}/>}/>
-
+                <Route element={<ProtectedRoutes userProfile={userProfile}/>}>
+                    <Route path={"/favorites"}
+                           element={<FavoriteGallery movies={movies} toggleFavorite={toggleFavorite}/>}/>
+                </Route>
             </Routes>
         </>
     )
